@@ -47,7 +47,7 @@ export default function Navbar() {
                         className="flex items-center gap-3 group"
                     >
                         <img
-                            src="/logo.png"
+                            src="/logo.svg"
                             alt="Eğinkaya İnşaat Logo"
                             className="h-12 w-auto"
                         />

@@ -32,7 +32,7 @@ export default function Footer() {
                             className="inline-block mb-6"
                         >
                             <img
-                                src="/logo.png"
+                                src="/logo.svg"
                                 alt="Eğinkaya İnşaat Logo"
                                 className="h-14 w-auto brightness-0 invert"
                             />
