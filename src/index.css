@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary-black: #0a0a0a;
+  --color-primary-red: #dc2626;
+  --color-primary-darkred: #b91c1c;
+  --color-neutral-white: #ffffff;
+  --color-neutral-lightgray: #f3f4f6;
+  --color-neutral-darkgray: #1f2937;
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+}
 
 * {
   margin: 0;
@@ -15,37 +23,35 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-family-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@layer components {
-  .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
-  }
-  
-  .container-max {
-    @apply max-w-7xl mx-auto;
-  }
-  
-  .btn-primary {
-    @apply bg-primary-red hover:bg-primary-darkred text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105;
-  }
-  
-  .btn-secondary {
-    @apply border-2 border-white text-white hover:bg-white hover:text-primary-black font-semibold py-3 px-8 rounded-lg transition-all duration-300;
-  }
-  
-  .heading-primary {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-black;
-  }
-  
-  .heading-secondary {
-    @apply text-2xl sm:text-3xl font-bold text-primary-black;
-  }
-  
-  .text-accent {
-    @apply text-primary-red;
-  }
+.section-padding {
+  @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+}
+
+.container-max {
+  @apply max-w-7xl mx-auto;
+}
+
+.btn-primary {
+  @apply bg-primary-red hover:bg-primary-darkred text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105;
+}
+
+.btn-secondary {
+  @apply border-2 border-white text-white hover:bg-white hover:text-primary-black font-semibold py-3 px-8 rounded-lg transition-all duration-300;
+}
+
+.heading-primary {
+  @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-black;
+}
+
+.heading-secondary {
+  @apply text-2xl sm:text-3xl font-bold text-primary-black;
+}
+
+.text-accent {
+  @apply text-primary-red;
 }
