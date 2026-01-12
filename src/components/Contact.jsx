@@ -32,7 +32,6 @@ const contactInfo = [
 export default function Contact() {
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Form submission logic would go here
         alert('Mesajınız alındı! En kısa sürede size dönüş yapacağız.');
     };
 
@@ -45,49 +44,49 @@ export default function Contact() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-12"
                 >
-                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-50 px-4 py-2 rounded-full mb-4">
+                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-50 px-3 py-1.5 rounded-full mb-3">
                         İletişim
                     </span>
                     <h2 className="heading-primary">Bizimle İletişime Geçin</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-xl leading-relaxed">
+                    <p className="text-gray-600 max-w-2xl mx-auto mt-4 text-base">
                         Projeleriniz için ücretsiz keşif ve fiyat teklifi almak için bize ulaşın.
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
+                <div className="grid lg:grid-cols-2 gap-12">
                     {/* Contact Info */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        className="space-y-10"
+                        className="space-y-6"
                     >
-                        <div className="space-y-4">
-                            <h3 className="text-3xl font-bold text-primary-black">
+                        <div>
+                            <h3 className="text-xl font-bold text-primary-black mb-3">
                                 İletişim Bilgileri
                             </h3>
-                            <p className="text-gray-600 text-lg leading-relaxed">
+                            <p className="text-gray-600 text-sm">
                                 Projeleriniz hakkında görüşmek veya teklif almak için aşağıdaki
                                 iletişim kanallarından bize ulaşabilirsiniz.
                             </p>
                         </div>
 
-                        <div className="space-y-8">
+                        <div className="space-y-5">
                             {contactInfo.map((info) => (
                                 <a
                                     key={info.label}
                                     href={info.href}
-                                    className="flex items-start gap-5 group"
+                                    className="flex items-start gap-4 group"
                                 >
-                                    <div className="w-14 h-14 bg-primary-red/10 rounded-2xl flex items-center justify-center group-hover:bg-primary-red transition-colors duration-300 shrink-0">
-                                        <info.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors duration-300" />
+                                    <div className="w-11 h-11 bg-primary-red/10 rounded-xl flex items-center justify-center group-hover:bg-primary-red transition-colors duration-300 shrink-0">
+                                        <info.icon className="w-5 h-5 text-primary-red group-hover:text-white transition-colors duration-300" />
                                     </div>
                                     <div>
-                                        <div className="text-sm text-gray-500 font-medium mb-1">{info.label}</div>
-                                        <div className="text-primary-black font-semibold text-lg group-hover:text-primary-red transition-colors duration-300">
+                                        <div className="text-xs text-gray-500 font-medium">{info.label}</div>
+                                        <div className="text-primary-black font-semibold text-sm group-hover:text-primary-red transition-colors duration-300">
                                             {info.value}
                                         </div>
                                     </div>
@@ -105,52 +104,52 @@ export default function Contact() {
                     >
                         <form
                             onSubmit={handleSubmit}
-                            className="bg-white rounded-3xl p-10 space-y-8 shadow-xl shadow-black/5 border border-gray-100"
+                            className="bg-white rounded-2xl p-6 space-y-5 shadow-lg shadow-black/5 border border-gray-100"
                         >
-                            <div className="grid sm:grid-cols-2 gap-6">
+                            <div className="grid sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-semibold text-primary-black mb-3">
+                                    <label className="block text-sm font-semibold text-primary-black mb-2">
                                         Adınız Soyadınız
                                     </label>
                                     <input
                                         type="text"
                                         required
-                                        className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-lg"
+                                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
                                         placeholder="Adınız Soyadınız"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-primary-black mb-3">
+                                    <label className="block text-sm font-semibold text-primary-black mb-2">
                                         Telefon
                                     </label>
                                     <input
                                         type="tel"
                                         required
-                                        className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-lg"
+                                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
                                         placeholder="0(5XX) XXX XX XX"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-primary-black mb-3">
+                                <label className="block text-sm font-semibold text-primary-black mb-2">
                                     E-posta
                                 </label>
                                 <input
                                     type="email"
                                     required
-                                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-lg"
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
                                     placeholder="ornek@email.com"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-primary-black mb-3">
+                                <label className="block text-sm font-semibold text-primary-black mb-2">
                                     Konu
                                 </label>
                                 <select
                                     required
-                                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-lg"
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
                                 >
                                     <option value="">Konu Seçin</option>
                                     <option value="teklif">Fiyat Teklifi</option>
@@ -161,22 +160,22 @@ export default function Contact() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-semibold text-primary-black mb-3">
+                                <label className="block text-sm font-semibold text-primary-black mb-2">
                                     Mesajınız
                                 </label>
                                 <textarea
                                     required
-                                    rows={5}
-                                    className="w-full px-5 py-4 rounded-xl border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all resize-none bg-neutral-lightgray text-lg"
+                                    rows={4}
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all resize-none bg-neutral-lightgray text-sm"
                                     placeholder="Projeniz hakkında bilgi verin..."
                                 />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full btn-primary flex items-center justify-center gap-3 text-lg"
+                                className="w-full btn-primary flex items-center justify-center gap-2"
                             >
-                                <Send className="w-5 h-5" />
+                                <Send className="w-4 h-4" />
                                 Mesaj Gönder
                             </button>
                         </form>
