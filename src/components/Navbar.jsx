@@ -44,12 +44,12 @@ export default function Navbar() {
                     <a
                         href="#hero"
                         onClick={(e) => handleLinkClick(e, '#hero')}
-                        className="flex items-center gap-3 group ml-4"
+                        className="flex items-center gap-3 group -ml-2"
                     >
                         <img
                             src="/logo.svg"
                             alt="Eğinkaya İnşaat Logo"
-                            className="h-14 w-auto"
+                            className="h-20 w-auto"
                         />
                     </a>
 
