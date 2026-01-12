@@ -49,7 +49,7 @@ export default function Navbar() {
                         <img
                             src="/logo.svg"
                             alt="Eğinkaya İnşaat Logo"
-                            className="h-16 w-auto"
+                            className="h-20 w-auto"
                         />
                     </a>
 
