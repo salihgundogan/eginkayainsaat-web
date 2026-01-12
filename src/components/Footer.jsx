@@ -34,7 +34,7 @@ export default function Footer() {
                             <img
                                 src="/logo-white.svg"
                                 alt="Eğinkaya İnşaat Logo"
-                                className="h-20 w-auto"
+                                className="h-24 w-auto"
                             />
                         </a>
                         <p className="text-gray-400 leading-relaxed max-w-md">
