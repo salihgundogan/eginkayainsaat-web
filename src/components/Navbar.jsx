@@ -38,7 +38,7 @@ export default function Navbar() {
                 : 'bg-white shadow-sm'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <a
@@ -49,7 +49,7 @@ export default function Navbar() {
                         <img
                             src="/logo.svg"
                             alt="Eğinkaya İnşaat Logo"
-                            className="h-28 w-auto"
+                            className="h-12 w-auto"
                         />
                     </a>
 
