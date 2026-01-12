@@ -74,9 +74,9 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
                                 viewport={{ once: true }}
-                                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow group"
+                                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow group text-center"
                             >
-                                <div className="w-12 h-12 bg-primary-red/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-red transition-colors">
+                                <div className="w-12 h-12 bg-primary-red/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-red transition-colors mx-auto">
                                     <stat.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors" />
                                 </div>
                                 <div className="text-3xl font-bold text-primary-black">{stat.value}</div>

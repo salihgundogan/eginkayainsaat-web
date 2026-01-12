@@ -40,8 +40,8 @@ export default function Projects() {
                             key={year}
                             onClick={() => setSelectedYear(year)}
                             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${selectedYear === year
-                                    ? 'bg-primary-red text-white'
-                                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                                ? 'bg-primary-red text-white'
+                                : 'bg-white text-gray-700 hover:bg-gray-100'
                                 }`}
                         >
                             {year}
@@ -52,7 +52,7 @@ export default function Projects() {
                 {/* Projects Grid */}
                 <motion.div
                     layout
-                    className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid sm:grid-cols-2 gap-8"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
@@ -67,7 +67,7 @@ export default function Projects() {
                             >
                                 {/* Image - Only shown if SHOW_PROJECT_IMAGES is true */}
                                 {SHOW_PROJECT_IMAGES && (
-                                    <div className="relative h-48 overflow-hidden">
+                                    <div className="relative h-64 overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title}

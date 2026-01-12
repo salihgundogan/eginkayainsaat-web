@@ -34,11 +34,11 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-primary-black/95 backdrop-blur-md shadow-lg'
-                    : 'bg-primary-black'
+                ? 'bg-primary-black/95 backdrop-blur-md shadow-lg'
+                : 'bg-primary-black'
                 }`}
         >
-            <div className="container-max section-padding py-4">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <a

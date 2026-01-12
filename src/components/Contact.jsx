@@ -105,52 +105,52 @@ export default function Contact() {
                     >
                         <form
                             onSubmit={handleSubmit}
-                            className="bg-neutral-lightgray rounded-2xl p-8 space-y-6"
+                            className="bg-white rounded-2xl p-8 space-y-6 shadow-lg border border-gray-100"
                         >
                             <div className="grid sm:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="block text-sm font-semibold text-primary-black mb-2">
                                         Adınız Soyadınız
                                     </label>
                                     <input
                                         type="text"
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-red focus:ring-2 focus:ring-primary-red/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray"
                                         placeholder="Adınız Soyadınız"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="block text-sm font-semibold text-primary-black mb-2">
                                         Telefon
                                     </label>
                                     <input
                                         type="tel"
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-red focus:ring-2 focus:ring-primary-red/20 outline-none transition-all"
+                                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray"
                                         placeholder="0(5XX) XXX XX XX"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-primary-black mb-2">
                                     E-posta
                                 </label>
                                 <input
                                     type="email"
                                     required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-red focus:ring-2 focus:ring-primary-red/20 outline-none transition-all"
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray"
                                     placeholder="ornek@email.com"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-primary-black mb-2">
                                     Konu
                                 </label>
                                 <select
                                     required
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-red focus:ring-2 focus:ring-primary-red/20 outline-none transition-all bg-white"
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray"
                                 >
                                     <option value="">Konu Seçin</option>
                                     <option value="teklif">Fiyat Teklifi</option>
@@ -161,13 +161,13 @@ export default function Contact() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="block text-sm font-semibold text-primary-black mb-2">
                                     Mesajınız
                                 </label>
                                 <textarea
                                     required
                                     rows={4}
-                                    className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary-red focus:ring-2 focus:ring-primary-red/20 outline-none transition-all resize-none"
+                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all resize-none bg-neutral-lightgray"
                                     placeholder="Projeniz hakkında bilgi verin..."
                                 />
                             </div>
