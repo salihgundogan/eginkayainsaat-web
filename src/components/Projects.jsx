@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Building2, Calendar } from 'lucide-react';
+import { MapPin, Building2, Calendar, ArrowRight } from 'lucide-react';
 import { projects } from '../data/projects';
 import { SHOW_PROJECT_IMAGES } from '../config/settings';
 
@@ -14,7 +14,7 @@ export default function Projects() {
         : projects.filter((p) => p.year === selectedYear);
 
     return (
-        <section id="projects" className="bg-neutral-lightgray section-padding">
+        <section id="projects" className="bg-gradient-to-b from-neutral-lightgray to-white section-padding">
             <div className="container-max">
                 {/* Header */}
                 <motion.div
@@ -22,12 +22,12 @@ export default function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-10"
+                    className="text-center mb-12"
                 >
-                    <span className="text-primary-red font-bold uppercase tracking-wider text-xs">
+                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-50 px-4 py-2 rounded-full mb-4">
                         Projelerimiz
                     </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-black mt-3">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-black">
                         Tamamlanan İşler
                     </h2>
                     <p className="text-gray-600 max-w-xl mx-auto mt-4 text-base">
@@ -35,83 +35,149 @@ export default function Projects() {
                     </p>
                 </motion.div>
 
-                {/* Year Filter - Optimized Buttons */}
-                <div className="flex flex-wrap justify-center gap-2 mb-10">
-                    {years.map((year) => (
-                        <button
-                            key={year}
-                            onClick={() => setSelectedYear(year)}
-                            className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${selectedYear === year
-                                ? 'bg-primary-red text-white shadow-lg shadow-primary-red/30'
-                                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
-                                }`}
-                        >
-                            {year}
-                        </button>
-                    ))}
-                </div>
+                {/* Modern Year Filter Tabs */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="flex justify-center mb-12"
+                >
+                    <div className="inline-flex bg-white p-1.5 rounded-2xl shadow-lg shadow-black/5 border border-gray-100">
+                        {years.map((year) => (
+                            <button
+                                key={year}
+                                onClick={() => setSelectedYear(year)}
+                                className={`relative px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ${selectedYear === year
+                                        ? 'text-white'
+                                        : 'text-gray-600 hover:text-gray-900'
+                                    }`}
+                            >
+                                {selectedYear === year && (
+                                    <motion.div
+                                        layoutId="activeTab"
+                                        className="absolute inset-0 bg-gradient-to-r from-primary-red to-red-600 rounded-xl shadow-lg shadow-red-500/30"
+                                        transition={{ type: "spring", duration: 0.5 }}
+                                    />
+                                )}
+                                <span className="relative z-10">{year}</span>
+                            </button>
+                        ))}
+                    </div>
+                </motion.div>
 
-                {/* Projects Grid - 2 Column Layout */}
+                {/* Projects Grid */}
                 <motion.div
                     layout
-                    className="grid md:grid-cols-2 gap-6"
+                    className="grid md:grid-cols-2 gap-8"
                 >
                     <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((project) => (
+                        {filteredProjects.map((project, index) => (
                             <motion.div
                                 key={project.id}
                                 layout
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.3 }}
-                                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+                                transition={{ duration: 0.4, delay: index * 0.1 }}
+                                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-black/5 hover:shadow-2xl hover:shadow-black/10 transition-all duration-500 border border-gray-100"
                             >
                                 {/* Image */}
                                 {SHOW_PROJECT_IMAGES && (
-                                    <div className="relative h-56 sm:h-64 overflow-hidden">
+                                    <div className="relative h-64 overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                                         />
-                                        <div className="absolute top-3 left-3">
-                                            <span className="bg-primary-red text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                                        {/* Gradient Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                                        {/* Year Badge - Modern Style */}
+                                        <div className="absolute top-4 left-4">
+                                            <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-sm text-primary-black text-sm font-bold px-4 py-2 rounded-full shadow-lg">
+                                                <Calendar className="w-4 h-4 text-primary-red" />
                                                 {project.year}
                                             </span>
                                         </div>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                                        {/* Category Badge */}
+                                        <div className="absolute top-4 right-4">
+                                            <span className={`text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ${project.category === 'Kamu'
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'bg-emerald-500 text-white'
+                                                }`}>
+                                                {project.category}
+                                            </span>
+                                        </div>
+
+                                        {/* Bottom Info on Image */}
+                                        <div className="absolute bottom-4 left-4 right-4">
+                                            <div className="flex items-center gap-2 text-white/90 text-sm mb-2">
+                                                <MapPin className="w-4 h-4" />
+                                                <span>{project.location}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 )}
 
                                 {/* Content */}
-                                <div className="p-5">
+                                <div className="p-6">
                                     {/* Year badge - shown when images are hidden */}
                                     {!SHOW_PROJECT_IMAGES && (
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <Calendar className="w-4 h-4 text-primary-red" />
-                                            <span className="text-primary-red font-bold text-sm">{project.year}</span>
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <span className="inline-flex items-center gap-1.5 bg-gray-100 text-primary-black text-sm font-bold px-4 py-2 rounded-full">
+                                                <Calendar className="w-4 h-4 text-primary-red" />
+                                                {project.year}
+                                            </span>
+                                            <span className={`text-xs font-bold px-3 py-1.5 rounded-full ${project.category === 'Kamu'
+                                                    ? 'bg-blue-100 text-blue-700'
+                                                    : 'bg-emerald-100 text-emerald-700'
+                                                }`}>
+                                                {project.category}
+                                            </span>
                                         </div>
                                     )}
 
-                                    <h3 className="text-base sm:text-lg font-bold text-primary-black mb-3 line-clamp-2 group-hover:text-primary-red transition-colors leading-snug">
+                                    <h3 className="text-lg font-bold text-primary-black mb-4 line-clamp-2 group-hover:text-primary-red transition-colors duration-300 leading-relaxed">
                                         {project.title}
                                     </h3>
 
-                                    <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                                        <div className="flex items-center gap-1.5">
-                                            <MapPin className="w-4 h-4 text-primary-red" />
-                                            <span>{project.location}</span>
-                                        </div>
-                                        <div className="flex items-center gap-1.5">
-                                            <Building2 className="w-4 h-4 text-primary-red" />
-                                            <span>{project.category}</span>
+                                    {/* Footer with location (for no-image mode) and arrow */}
+                                    <div className="flex items-center justify-between">
+                                        {!SHOW_PROJECT_IMAGES && (
+                                            <div className="flex items-center gap-2 text-gray-500 text-sm">
+                                                <MapPin className="w-4 h-4 text-primary-red" />
+                                                <span>{project.location}</span>
+                                            </div>
+                                        )}
+
+                                        <div className={`flex items-center gap-2 text-primary-red font-semibold text-sm group-hover:gap-3 transition-all duration-300 ${SHOW_PROJECT_IMAGES ? 'ml-auto' : ''}`}>
+                                            <span>Detaylar</span>
+                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Hover Border Effect */}
+                                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-primary-red/20 transition-colors duration-300 pointer-events-none" />
                             </motion.div>
                         ))}
                     </AnimatePresence>
+                </motion.div>
+
+                {/* Project Count */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="text-center mt-12"
+                >
+                    <p className="text-gray-500 text-sm">
+                        Toplam <span className="font-bold text-primary-black">{filteredProjects.length}</span> proje gösteriliyor
+                        {selectedYear !== 'Tümü' && <span> ({selectedYear} yılı)</span>}
+                    </p>
                 </motion.div>
             </div>
         </section>
