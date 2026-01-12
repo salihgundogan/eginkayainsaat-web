@@ -29,15 +29,13 @@ export default function Footer() {
                         <a
                             href="#hero"
                             onClick={(e) => handleLinkClick(e, '#hero')}
-                            className="flex items-center gap-3 mb-6"
+                            className="inline-block mb-6"
                         >
-                            <div className="p-2 bg-primary-red rounded-lg">
-                                <Building2 className="w-6 h-6 text-white" />
-                            </div>
-                            <div>
-                                <span className="text-xl font-bold">Eğinkaya</span>
-                                <span className="text-xl font-bold text-primary-red ml-1">İnşaat</span>
-                            </div>
+                            <img
+                                src="/logo.png"
+                                alt="Eğinkaya İnşaat Logo"
+                                className="h-14 w-auto brightness-0 invert"
+                            />
                         </a>
                         <p className="text-gray-400 leading-relaxed max-w-md">
                             Kamu ve özel sektör projelerinde güvenilir, kaliteli ve zamanında

@@ -38,7 +38,7 @@ export default function Navbar() {
                 : 'bg-primary-black'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <a
@@ -46,13 +46,11 @@ export default function Navbar() {
                         onClick={(e) => handleLinkClick(e, '#hero')}
                         className="flex items-center gap-3 group"
                     >
-                        <div className="p-2 bg-primary-red rounded-lg group-hover:bg-primary-darkred transition-colors">
-                            <Building2 className="w-6 h-6 text-white" />
-                        </div>
-                        <div>
-                            <span className="text-xl font-bold text-white">Eğinkaya</span>
-                            <span className="text-xl font-bold text-primary-red ml-1">İnşaat</span>
-                        </div>
+                        <img
+                            src="/logo.png"
+                            alt="Eğinkaya İnşaat Logo"
+                            className="h-12 w-auto"
+                        />
                     </a>
 
                     {/* Desktop Menu */}

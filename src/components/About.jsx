@@ -74,13 +74,13 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
                                 viewport={{ once: true }}
-                                className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow group text-center"
+                                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow group flex flex-col items-center justify-center text-center"
                             >
-                                <div className="w-12 h-12 bg-primary-red/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-red transition-colors mx-auto">
-                                    <stat.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors" />
+                                <div className="w-14 h-14 bg-primary-red/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-red transition-colors">
+                                    <stat.icon className="w-7 h-7 text-primary-red group-hover:text-white transition-colors" />
                                 </div>
-                                <div className="text-3xl font-bold text-primary-black">{stat.value}</div>
-                                <div className="text-gray-500 font-medium">{stat.label}</div>
+                                <div className="text-4xl font-bold text-primary-black">{stat.value}</div>
+                                <div className="text-gray-500 font-medium mt-1">{stat.label}</div>
                             </motion.div>
                         ))}
                     </motion.div>
