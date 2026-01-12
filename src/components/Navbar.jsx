@@ -44,7 +44,7 @@ export default function Navbar() {
                     <a
                         href="#hero"
                         onClick={(e) => handleLinkClick(e, '#hero')}
-                        className="flex items-center gap-3 group ml-16"
+                        className="flex items-center gap-3 group ml-32"
                     >
                         <img
                             src="/logo.svg"
