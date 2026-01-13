@@ -6,8 +6,7 @@
   --color-primary-black: #0a0a0a;
   --color-primary-red: #dc2626;
   --color-primary-darkred: #b91c1c;
-  /* Yeni bir renk tonu ekleyelim gradient için */
-  --color-primary-red-darker: #b91c1c; 
+  --color-primary-red-darker: #b91c1c;
   --color-neutral-white: #ffffff;
   --color-neutral-lightgray: #f8fafc;
   --color-neutral-darkgray: #1f2937;
@@ -68,13 +67,15 @@ body {
   @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-28;
 }
 
+/* REVİZE EDİLDİ: DAHA GENİŞ KONTEYNER
+   max-w-7xl yerine max-w-[1600px] kullanarak
+   içeriği büyük ekranlarda daha ferah hale getirdik.
+*/
 .container-max {
-  @apply max-w-7xl mx-auto;
+  @apply max-w-[1600px] mx-auto;
 }
 
-/* REVİZE EDİLMİŞ PREMIUM BUTON 
-   Daha tok, daha sağlam ve etkileşimi güçlü.
-*/
+/* Premium Buton Stili */
 .btn-primary {
   @apply relative bg-gradient-to-b from-primary-red to-primary-red-darker text-white font-bold py-4 px-8 rounded-xl border border-red-600/50 shadow-lg shadow-red-900/20 transition-all duration-300 hover:shadow-xl hover:shadow-red-600/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] active:shadow-inner tracking-wide;
 }
