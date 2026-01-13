@@ -45,25 +45,27 @@ export default function Contact() {
             {/* Background Decor */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-100/50 skew-x-12 translate-x-20 z-0" />
 
-            <div className="container-max relative z-10">
+            <div className="container-max relative z-10 pt-16">
 
                 {/* ===== HEADER SECTION ===== */}
-                <motion.div
-                    className="text-center max-w-2xl mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <span className="text-primary-red font-bold tracking-wider uppercase text-sm">
-                        İletişim
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-                        Projenizi Birlikte Hayata Geçirelim
-                    </h2>
-                    <p className="text-gray-600">
-                        Aklınızdaki sorular veya proje teklifleri için formu doldurabilir ya da doğrudan bize ulaşabilirsiniz.
-                    </p>
-                </motion.div>
+                <div className="w-full flex justify-center">
+                    <motion.div
+                        className="text-center max-w-2xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm">
+                            İletişim
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
+                            Projenizi Birlikte Hayata Geçirelim
+                        </h2>
+                        <p className="text-gray-600">
+                            Aklınızdaki sorular veya proje teklifleri için formu doldurabilir ya da doğrudan bize ulaşabilirsiniz.
+                        </p>
+                    </motion.div>
+                </div>
 
                 {/* ===== SPACER: Header ile Content arası ===== */}
                 <div className="h-20" />
