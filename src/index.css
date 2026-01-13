@@ -12,6 +12,7 @@
   --font-family-sans: 'Inter', system-ui, sans-serif;
 }
 
+/* Base Reset & Settings */
 * {
   margin: 0;
   padding: 0;
@@ -20,16 +21,49 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent; /* Mobilde tıklama gölgesini kaldırır */
 }
 
 body {
   font-family: var(--font-family-sans);
+  background-color: var(--color-neutral-white);
+  color: var(--color-primary-black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Yatay taşmaları engelle */
 }
 
+/* --- SENIOR TOUCHES --- */
+
+/* 1. Custom Scrollbar (Premium His) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 5px;
+  border: 2px solid #f1f1f1;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-red); /* Hover olunca kızarır */
+}
+
+/* 2. Brand Selection Color (Kurumsal Kimlik) */
+::selection {
+  background-color: var(--color-primary-red);
+  color: white;
+}
+
+/* Utility Classes (Legacy Support & Consistency) */
 .section-padding {
-  @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-20;
+  @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-28; /* Boşlukları biraz daha ferahlattım */
 }
 
 .container-max {
@@ -37,19 +71,11 @@ body {
 }
 
 .btn-primary {
-  @apply bg-primary-red hover:bg-primary-darkred text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg;
-}
-
-.btn-secondary {
-  @apply border-2 border-white text-white hover:bg-white hover:text-primary-black font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+  @apply bg-primary-red hover:bg-primary-darkred text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform active:scale-95 shadow-md hover:shadow-lg hover:shadow-red-500/30;
 }
 
 .heading-primary {
-  @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-black leading-tight;
-}
-
-.heading-secondary {
-  @apply text-2xl sm:text-3xl font-bold text-primary-black;
+  @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-black leading-tight tracking-tight;
 }
 
 .text-accent {
