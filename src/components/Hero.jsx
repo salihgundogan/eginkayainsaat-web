@@ -60,7 +60,7 @@ export default function Hero() {
                     >
                         <a
                             href="#projects"
-                            className="group flex items-center justify-center gap-3 px-8 py-4 bg-primary-red text-white rounded-full font-semibold text-lg transition-all duration-300 hover:bg-red-700 hover:scale-105 shadow-lg shadow-red-600/30"
+                            className="group flex items-center justify-center gap-3 px-14 py-5 bg-primary-red text-white rounded-xl font-semibold text-base transition-all duration-300 hover:bg-red-700 hover:scale-105 shadow-xl shadow-red-600/40"
                         >
                             Referanslarımız
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -68,7 +68,7 @@ export default function Hero() {
 
                         <a
                             href="#contact"
-                            className="group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-primary-black hover:scale-105"
+                            className="flex items-center justify-center px-14 py-5 bg-white text-primary-black rounded-xl font-semibold text-base transition-all duration-300 hover:bg-gray-100 hover:scale-105 shadow-xl"
                         >
                             Teklif Alın
                         </a>
