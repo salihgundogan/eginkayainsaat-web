@@ -4,7 +4,7 @@ import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data/projects';
 import { SHOW_PROJECT_IMAGES } from '../config/settings';
 
-// Yılları dinamik olarak al
+// Yılları projelerden otomatik çekiyoruz
 const uniqueYears = [...new Set(projects.map(p => p.year))].sort((a, b) => b - a);
 const years = ['Tümü', ...uniqueYears];
 
@@ -19,62 +19,64 @@ export default function Projects() {
         <section id="projects" className="bg-white section-padding relative">
             <div className="container-max">
 
-                {/* --- HEADER KISMI (TAM ORTADA) --- */}
-                {/* flex-col ve items-center ile her şeyi alt alta ve ortaya diziyoruz */}
-                <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+                {/* --- 1. BAŞLIK BÖLÜMÜ (TAM ORTADA) --- */}
+                {/* mx-auto ve text-center ile %100 ortalama garantisi */}
+                <div className="max-w-4xl mx-auto text-center mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm mb-3 block">
+                        <span className="text-primary-red font-bold tracking-widest uppercase text-sm mb-3 block">
                             Referanslarımız
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                             İmzamızı Attığımız İşler
                         </h2>
-                        <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
                             Kamu kurumlarından özel konutlara kadar, her detayında kaliteyi hedeflediğimiz tamamlanan projelerimiz.
                         </p>
                     </motion.div>
                 </div>
 
-                {/* --- BÜSBÜYÜK YIL FİLTRESİ (TAM ORTADA) --- */}
-                {/* mb-24 ile alttaki kartlarla arasına BÜYÜK boşluk ekledik */}
-                <div className="flex justify-center mb-24">
+                {/* --- 2. BÜSBÜYÜK YIL MENÜSÜ (TAM ORTADA) --- */}
+                {/* mb-24 ile kartlarla arasına GENİŞ boşluk bırakıldı */}
+                <div className="flex justify-center w-full mb-24">
                     <motion.div 
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-gray-100 p-2 rounded-full inline-flex flex-wrap justify-center gap-2"
+                        className="bg-white p-2 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
                     >
-                        {years.map((year) => (
-                            <button
-                                key={year}
-                                onClick={() => setSelectedYear(year)}
-                                // Butonlar büyük ve dolgun
-                                className={`relative px-8 py-3 sm:px-10 sm:py-4 text-base sm:text-xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap outline-none ${
-                                    selectedYear === year 
-                                        ? 'text-white' 
-                                        : 'text-gray-500 hover:text-gray-900 hover:bg-white/50'
-                                }`}
-                            >
-                                {selectedYear === year && (
-                                    <motion.div
-                                        layoutId="activeTab"
-                                        className="absolute inset-0 bg-primary-red rounded-full shadow-lg shadow-red-500/30 -z-10"
-                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                    />
-                                )}
-                                {year}
-                            </button>
-                        ))}
+                        <div className="flex gap-2 sm:gap-4 p-1">
+                            {years.map((year) => (
+                                <button
+                                    key={year}
+                                    onClick={() => setSelectedYear(year)}
+                                    // Butonlar büyük, dolgun ve yazı sığacak şekilde ayarlandı
+                                    className={`relative px-8 py-4 sm:px-12 sm:py-5 text-lg sm:text-2xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap outline-none min-w-[120px] ${
+                                        selectedYear === year 
+                                            ? 'text-white' 
+                                            : 'text-gray-400 hover:text-gray-900'
+                                    }`}
+                                >
+                                    {selectedYear === year && (
+                                        <motion.div
+                                            layoutId="activeTab"
+                                            className="absolute inset-0 bg-primary-red rounded-full shadow-lg shadow-red-600/40 -z-10"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
+                                    {year}
+                                </button>
+                            ))}
+                        </div>
                     </motion.div>
                 </div>
 
-                {/* --- PROJELER GRID --- */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                {/* --- 3. PROJELER IZGARASI --- */}
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
                             <motion.div
@@ -88,7 +90,7 @@ export default function Projects() {
                             >
                                 {/* Görsel Alanı */}
                                 {SHOW_PROJECT_IMAGES && (
-                                    <div className="relative h-72 overflow-hidden bg-gray-100">
+                                    <div className="relative h-72 sm:h-80 overflow-hidden bg-gray-100">
                                         <img
                                             src={project.image}
                                             alt={project.title}
@@ -109,9 +111,9 @@ export default function Projects() {
                                             </span>
                                         </div>
 
-                                        {/* İncele Butonu */}
+                                        {/* Hover Butonu */}
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                            <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
+                                            <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
                                                 <span>Projeyi İncele</span>
                                                 <ArrowUpRight className="w-5 h-5" />
                                             </div>
@@ -120,13 +122,13 @@ export default function Projects() {
                                 )}
 
                                 {/* İçerik Alanı */}
-                                <div className="p-8 flex flex-col flex-grow">
+                                <div className="p-8 md:p-10 flex flex-col flex-grow">
                                     <div className="flex items-center gap-2 mb-4 text-sm font-semibold text-gray-400">
                                         <Calendar className="w-4 h-4 text-primary-red" />
                                         <span>{project.year}</span>
                                     </div>
 
-                                    <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-primary-red transition-colors">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-primary-red transition-colors">
                                         {project.title}
                                     </h3>
 
