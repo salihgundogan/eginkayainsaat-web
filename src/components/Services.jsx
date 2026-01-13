@@ -6,7 +6,6 @@ import {
     HardHat,
     Home,
     Wrench,
-    ArrowUpRight
 } from 'lucide-react';
 
 const services = [
@@ -42,15 +41,56 @@ const services = [
     },
 ];
 
+// Tek bir kart bileşeni
+function ServiceCard({ service, index }) {
+    const IconComponent = service.icon;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            whileHover={{ y: -10 }}
+            className="group relative overflow-hidden"
+        >
+            {/* Card Container */}
+            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-300 flex flex-col items-center text-center">
+
+                {/* Top Border Animation */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-red to-red-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+
+                {/* Icon Container */}
+                <div className="w-20 h-20 rounded-2xl bg-red-50 flex items-center justify-center mb-8 group-hover:bg-primary-red transition-all duration-300 group-hover:scale-110">
+                    <IconComponent className="w-10 h-10 text-primary-red group-hover:text-white transition-colors duration-300" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-red transition-colors duration-300">
+                    {service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-600 leading-relaxed">
+                    {service.description}
+                </p>
+            </div>
+        </motion.div>
+    );
+}
+
 export default function Services() {
     return (
         <section id="services" className="bg-gray-50 section-padding relative overflow-hidden">
-            {/* Background Decor - Subtle Grid */}
+            {/* Background Grid Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
             <div className="container-max relative z-10">
-                <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+
+                {/* Section Header */}
+                <div className="w-full flex justify-center">
                     <motion.div
+                        className="max-w-3xl text-center"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -68,39 +108,17 @@ export default function Services() {
                     </motion.div>
                 </div>
 
+                {/* ===== SPACER: Başlık ile kartlar arası ===== */}
+                <div className="h-32" />
+
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
-                        <motion.div
+                        <ServiceCard
                             key={service.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            className="group bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl border border-gray-100 transition-all duration-300 relative overflow-hidden"
-                        >
-                            {/* Hover Effect Background Line */}
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-red to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-
-                            {/* Icon Box */}
-                            <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-red transition-colors duration-300">
-                                <service.icon className="w-7 h-7 text-primary-red group-hover:text-white transition-colors duration-300" />
-                            </div>
-
-                            {/* Content */}
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-red transition-colors">
-                                {service.title}
-                            </h3>
-                            <p className="text-gray-600 leading-relaxed text-sm mb-6">
-                                {service.description}
-                            </p>
-
-                            {/* Subtle Link Indicator */}
-                            <div className="flex items-center gap-2 text-sm font-semibold text-gray-400 group-hover:text-primary-red transition-colors">
-                                Detaylı Bilgi
-                                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                            </div>
-                        </motion.div>
+                            service={service}
+                            index={index}
+                        />
                     ))}
                 </div>
             </div>
