@@ -51,21 +51,21 @@ export default function Services() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-12"
                 >
-                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-500/10 px-4 py-2 rounded-full mb-4">
+                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-500/10 px-3 py-1.5 rounded-full mb-3">
                         Hizmetlerimiz
                     </span>
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
                         Profesyonel Çözümler
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto mt-6 text-xl leading-relaxed">
+                    <p className="text-gray-400 max-w-2xl mx-auto mt-4 text-base">
                         Kamu ve özel sektör için kapsamlı inşaat hizmetleri sunuyoruz.
                     </p>
                 </motion.div>
 
                 {/* Services Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {services.map((service, index) => (
                         <motion.div
                             key={service.title}
@@ -73,13 +73,13 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-10 hover:bg-white/10 hover:border-primary-red/50 transition-all duration-500 text-center flex flex-col items-center"
+                            className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-primary-red/50 transition-all duration-300 text-center flex flex-col items-center"
                         >
-                            <div className="w-18 h-18 bg-primary-red/20 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-red transition-colors duration-300" style={{ width: '72px', height: '72px' }}>
-                                <service.icon className="w-9 h-9 text-primary-red group-hover:text-white transition-colors duration-300" />
+                            <div className="w-12 h-12 bg-primary-red/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-red transition-colors duration-300">
+                                <service.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors duration-300" />
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                            <p className="text-gray-400 leading-relaxed text-lg">{service.description}</p>
+                            <h3 className="text-lg font-bold text-white mb-2">{service.title}</h3>
+                            <p className="text-gray-400 leading-relaxed text-sm">{service.description}</p>
                         </motion.div>
                     ))}
                 </div>

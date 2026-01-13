@@ -22,15 +22,15 @@ export default function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-10"
                 >
-                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-50 px-4 py-2 rounded-full mb-4">
+                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-50 px-3 py-1.5 rounded-full mb-3">
                         Projelerimiz
                     </span>
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-black leading-tight">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-black">
                         Tamamlanan İşler
                     </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-xl leading-relaxed">
+                    <p className="text-gray-600 max-w-xl mx-auto mt-4 text-base">
                         Kamu ve özel sektörde gerçekleştirdiğimiz projeler.
                     </p>
                 </motion.div>
@@ -41,14 +41,14 @@ export default function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="flex justify-center mb-16"
+                    className="flex justify-center mb-10"
                 >
-                    <div className="inline-flex bg-white p-2 rounded-2xl shadow-xl shadow-black/5 border border-gray-100">
+                    <div className="inline-flex bg-white p-1.5 rounded-xl shadow-lg shadow-black/5 border border-gray-100">
                         {years.map((year) => (
                             <button
                                 key={year}
                                 onClick={() => setSelectedYear(year)}
-                                className={`relative px-8 py-4 text-sm font-semibold rounded-xl transition-all duration-300 ${selectedYear === year
+                                className={`relative px-5 py-2.5 text-sm font-semibold rounded-lg transition-all duration-300 ${selectedYear === year
                                         ? 'text-white'
                                         : 'text-gray-600 hover:text-gray-900'
                                     }`}
@@ -56,7 +56,7 @@ export default function Projects() {
                                 {selectedYear === year && (
                                     <motion.div
                                         layoutId="activeTab"
-                                        className="absolute inset-0 bg-gradient-to-r from-primary-red to-red-600 rounded-xl shadow-lg shadow-red-500/30"
+                                        className="absolute inset-0 bg-gradient-to-r from-primary-red to-red-600 rounded-lg shadow-lg shadow-red-500/30"
                                         transition={{ type: "spring", duration: 0.5 }}
                                     />
                                 )}
@@ -69,7 +69,7 @@ export default function Projects() {
                 {/* Projects Grid */}
                 <motion.div
                     layout
-                    className="grid md:grid-cols-2 gap-10"
+                    className="grid md:grid-cols-2 gap-6"
                 >
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project, index) => (
@@ -80,30 +80,30 @@ export default function Projects() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-black/10 transition-all duration-500 border border-gray-100"
+                                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-all duration-300 border border-gray-100"
                             >
                                 {/* Image */}
                                 {SHOW_PROJECT_IMAGES && (
-                                    <div className="relative h-72 overflow-hidden">
+                                    <div className="relative h-56 overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
                                         {/* Gradient Overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
 
-                                        {/* Year Badge - Modern Style */}
-                                        <div className="absolute top-5 left-5">
-                                            <span className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm text-primary-black text-sm font-bold px-5 py-2.5 rounded-full shadow-lg">
-                                                <Calendar className="w-4 h-4 text-primary-red" />
+                                        {/* Year Badge */}
+                                        <div className="absolute top-3 left-3">
+                                            <span className="inline-flex items-center gap-1.5 bg-white/95 backdrop-blur-sm text-primary-black text-xs font-bold px-3 py-1.5 rounded-full shadow-md">
+                                                <Calendar className="w-3.5 h-3.5 text-primary-red" />
                                                 {project.year}
                                             </span>
                                         </div>
 
                                         {/* Category Badge */}
-                                        <div className="absolute top-5 right-5">
-                                            <span className={`text-xs font-bold px-4 py-2 rounded-full shadow-lg ${project.category === 'Kamu'
+                                        <div className="absolute top-3 right-3">
+                                            <span className={`text-xs font-bold px-3 py-1.5 rounded-full shadow-md ${project.category === 'Kamu'
                                                     ? 'bg-blue-500 text-white'
                                                     : 'bg-emerald-500 text-white'
                                                 }`}>
@@ -111,10 +111,10 @@ export default function Projects() {
                                             </span>
                                         </div>
 
-                                        {/* Bottom Info on Image */}
-                                        <div className="absolute bottom-5 left-5 right-5">
-                                            <div className="flex items-center gap-2 text-white/90 text-sm">
-                                                <MapPin className="w-4 h-4" />
+                                        {/* Location on Image */}
+                                        <div className="absolute bottom-3 left-3">
+                                            <div className="flex items-center gap-1.5 text-white/90 text-sm">
+                                                <MapPin className="w-3.5 h-3.5" />
                                                 <span>{project.location}</span>
                                             </div>
                                         </div>
@@ -122,15 +122,15 @@ export default function Projects() {
                                 )}
 
                                 {/* Content */}
-                                <div className="p-8">
+                                <div className="p-5">
                                     {/* Year badge - shown when images are hidden */}
                                     {!SHOW_PROJECT_IMAGES && (
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="inline-flex items-center gap-2 bg-gray-100 text-primary-black text-sm font-bold px-5 py-2.5 rounded-full">
-                                                <Calendar className="w-4 h-4 text-primary-red" />
+                                        <div className="flex items-center gap-2 mb-3">
+                                            <span className="inline-flex items-center gap-1.5 bg-gray-100 text-primary-black text-xs font-bold px-3 py-1.5 rounded-full">
+                                                <Calendar className="w-3.5 h-3.5 text-primary-red" />
                                                 {project.year}
                                             </span>
-                                            <span className={`text-xs font-bold px-4 py-2 rounded-full ${project.category === 'Kamu'
+                                            <span className={`text-xs font-bold px-3 py-1.5 rounded-full ${project.category === 'Kamu'
                                                     ? 'bg-blue-100 text-blue-700'
                                                     : 'bg-emerald-100 text-emerald-700'
                                                 }`}>
@@ -139,28 +139,25 @@ export default function Projects() {
                                         </div>
                                     )}
 
-                                    <h3 className="text-xl font-bold text-primary-black mb-5 line-clamp-2 group-hover:text-primary-red transition-colors duration-300 leading-relaxed">
+                                    <h3 className="text-base font-bold text-primary-black mb-3 line-clamp-2 group-hover:text-primary-red transition-colors duration-300 leading-snug">
                                         {project.title}
                                     </h3>
 
-                                    {/* Footer with location (for no-image mode) and arrow */}
+                                    {/* Footer */}
                                     <div className="flex items-center justify-between">
                                         {!SHOW_PROJECT_IMAGES && (
-                                            <div className="flex items-center gap-2 text-gray-500 text-sm">
-                                                <MapPin className="w-4 h-4 text-primary-red" />
+                                            <div className="flex items-center gap-1.5 text-gray-500 text-sm">
+                                                <MapPin className="w-3.5 h-3.5 text-primary-red" />
                                                 <span>{project.location}</span>
                                             </div>
                                         )}
 
-                                        <div className={`flex items-center gap-2 text-primary-red font-semibold text-sm group-hover:gap-3 transition-all duration-300 ${SHOW_PROJECT_IMAGES ? 'ml-auto' : ''}`}>
+                                        <div className={`flex items-center gap-1.5 text-primary-red font-semibold text-sm group-hover:gap-2 transition-all duration-300 ${SHOW_PROJECT_IMAGES ? 'ml-auto' : ''}`}>
                                             <span>Detaylar</span>
-                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Hover Border Effect */}
-                                <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-primary-red/20 transition-colors duration-300 pointer-events-none" />
                             </motion.div>
                         ))}
                     </AnimatePresence>
@@ -172,9 +169,9 @@ export default function Projects() {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                     viewport={{ once: true }}
-                    className="text-center mt-16"
+                    className="text-center mt-10"
                 >
-                    <p className="text-gray-500 text-lg">
+                    <p className="text-gray-500 text-sm">
                         Toplam <span className="font-bold text-primary-black">{filteredProjects.length}</span> proje gösteriliyor
                         {selectedYear !== 'Tümü' && <span> ({selectedYear} yılı)</span>}
                     </p>
