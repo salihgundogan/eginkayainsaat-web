@@ -81,7 +81,7 @@ export default function Contact() {
                                 href={info.href}
                                 target={info.icon === MapPin ? "_blank" : "_self"}
                                 rel="noreferrer"
-                                className="group flex items-start gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300"
+                                className="group flex items-start gap-5 p-5 bg-white rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 transition-all duration-300 hover:-translate-y-1"
                             >
                                 <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-red transition-colors duration-300">
                                     <info.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors duration-300" />
