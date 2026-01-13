@@ -16,8 +16,8 @@ export default function Hero() {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
-                <div className="max-w-3xl">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 flex items-center justify-center">
+                <div className="max-w-3xl text-center">
 
                     {/* Badge / Tagline */}
                     <motion.div
@@ -27,7 +27,7 @@ export default function Hero() {
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6"
                     >
                         <span className="w-2 h-2 rounded-full bg-primary-red animate-pulse" />
-                        Güven ve Kalitenin Adresi
+                        20+ Yıllık Tecrübe
                     </motion.div>
 
                     {/* Main Headline */}
@@ -37,7 +37,7 @@ export default function Hero() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
                     >
-                        Geleceği <span className="text-primary-red">Sağlam Temeller</span> Üzerine Kuruyoruz
+                        Zorlu Projelerin <span className="text-primary-red">Çözüm Ortağı</span>
                     </motion.h1>
 
                     {/* Subtitle */}
@@ -47,8 +47,8 @@ export default function Hero() {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl"
                     >
-                        Eğinkaya İnşaat olarak, modern mimariyi geleneksel sağlamlık anlayışıyla birleştiriyor,
-                        yaşam alanlarınıza değer katıyoruz.
+                        Kamu yapılarından nitelikli konut projelerine kadar; taahhüt ettiğimiz tarihte,
+                        taahhüt ettiğimiz kalitede teslim ediyoruz. Risk yok, tecrübe var.
                     </motion.p>
 
                     {/* Buttons */}
@@ -56,13 +56,13 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.6 }}
-                        className="flex flex-col sm:flex-row gap-4"
+                        className="flex flex-col sm:flex-row gap-4 justify-center"
                     >
                         <a
                             href="#projects"
                             className="group flex items-center justify-center gap-3 px-8 py-4 bg-primary-red text-white rounded-full font-semibold text-lg transition-all duration-300 hover:bg-red-700 hover:scale-105 shadow-lg shadow-red-600/30"
                         >
-                            Projelerimiz
+                            Referanslarımız
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </a>
 
@@ -70,7 +70,7 @@ export default function Hero() {
                             href="#contact"
                             className="group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-primary-black hover:scale-105"
                         >
-                            İletişime Geçin
+                            Teklif Alın
                         </a>
                     </motion.div>
                 </div>

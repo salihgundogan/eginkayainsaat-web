@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Building, Users, Award, Calendar } from 'lucide-react';
 
 const stats = [
-    { icon: Calendar, value: '10+', label: 'Yıllık Deneyim' },
+    { icon: Calendar, value: '20+', label: 'Yıllık Deneyim' },
     { icon: Building, value: '50+', label: 'Tamamlanan Proje' },
     { icon: Users, value: '100+', label: 'Mutlu Müşteri' },
     { icon: Award, value: '3', label: 'Aktif Bölge' },
@@ -13,6 +13,7 @@ export default function About() {
         <section id="about" className="bg-neutral-lightgray section-padding">
             <div className="container-max">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
+
                     {/* Left Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -26,25 +27,22 @@ export default function About() {
                                 Hakkımızda
                             </span>
                             <h2 className="heading-primary">
-                                Güvenilir İnşaat Partneri
+                                Söz Verdiğimiz Gibi
                             </h2>
                         </div>
 
                         <p className="text-gray-600 text-base leading-relaxed">
-                            <strong className="text-primary-black">Eğinkaya İnşaat</strong> olarak,
-                            kamu ve özel sektör projelerinde uzun yıllardır hizmet veriyoruz.
-                            Niğde, Kayseri ve Sivas bölgelerinde gerçekleştirdiğimiz projelerle
-                            sektörde güvenilir bir isim olduk.
+                            İnşaat sektörü hata kabul etmez. Biz, statik hesaplardan malzeme kalitesine kadar
+                            her aşamada <strong className="text-primary-black">'sıfır hata'</strong> prensibiyle çalışıyoruz.
                         </p>
 
                         <p className="text-gray-600 text-base leading-relaxed">
-                            Sağlık tesisleri, eğitim kurumları, kamu binaları ve lüks villa projelerinde
-                            kalite standartlarından ödün vermeden, zamanında teslim anlayışıyla çalışıyoruz.
-                            Deneyimli mühendis kadromuz ve güçlü iş ortaklarımızla projelerinizi hayata geçiriyoruz.
+                            Bölgenin en zorlu şantiyelerinde, en kısıtlı zamanlarda bile kaliteden ödün vermeden
+                            iş bitirme başarımız, bizim en büyük referansımızdır.
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-2">
-                            {['Kaliteli İşçilik', 'Zamanında Teslim', 'Güvenilir Hizmet'].map((item) => (
+                            {['Tam Zamanında Teslim', 'Deprem Yönetmeliğine Uygunluk', 'Şeffaf Süreç'].map((item) => (
                                 <div key={item} className="flex items-center gap-2">
                                     <div className="w-2 h-2 bg-primary-red rounded-full" />
                                     <span className="text-gray-700 font-medium text-sm">{item}</span>

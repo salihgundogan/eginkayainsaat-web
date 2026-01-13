@@ -59,10 +59,10 @@ export default function Contact() {
                             İletişim
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-                            Projenizi Birlikte Hayata Geçirelim
+                            Profesyonel Çözüm İsteyenlere
                         </h2>
                         <p className="text-gray-600">
-                            Aklınızdaki sorular veya proje teklifleri için formu doldurabilir ya da doğrudan bize ulaşabilirsiniz.
+                            Projenizin detaylarını uzman ekibimizle değerlendirin, en doğru yol haritasını çizelim.
                         </p>
                     </motion.div>
                 </div>
