@@ -51,67 +51,56 @@ export default function Navbar() {
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-end h-20 gap-8">
+                <div className="flex items-center justify-between h-24 gap-8">
 
-                    {/* Logo - Sağ tarafta */}
+                    {/* Logo - Sol tarafta */}
                     <motion.a
                         href="#hero"
                         onClick={(e) => handleLinkClick(e, '#hero')}
-                        className="flex items-center gap-3 group order-last"
+                        className="flex items-center gap-3 group"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
-                        <div className="relative">
-                            <img
-                                src="/logo.svg"
-                                alt="Eğinkaya İnşaat Logo"
-                                className="h-14 w-auto transition-all duration-300 group-hover:brightness-110"
-                            />
-                            <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-red to-primary-red/50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right" />
-                        </div>
+                        <img
+                            src="/logo.svg"
+                            alt="Eğinkaya İnşaat Logo"
+                            className="h-16 w-auto transition-all duration-300 group-hover:brightness-110"
+                        />
                     </motion.a>
 
                     {/* Desktop Menu - Sağ tarafta */}
-                    <div className="hidden lg:flex items-center gap-2">
+                    <div className="hidden lg:flex items-center gap-6">
                         {navLinks.slice(0, -1).map((link, index) => (
                             <motion.a
                                 key={link.name}
                                 href={link.href}
                                 onClick={(e) => handleLinkClick(e, link.href)}
-                                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 group ${activeLink === link.href
+                                className={`relative px-3 py-2 text-base font-medium transition-all duration-300 ${activeLink === link.href
                                         ? 'text-primary-red'
                                         : 'text-gray-700 hover:text-primary-red'
                                     }`}
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                whileHover={{ y: -2 }}
                             >
                                 {link.name}
                                 {/* Active indicator */}
-                                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-red transition-all duration-300 ${activeLink === link.href ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+                                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary-red transition-all duration-300 ${activeLink === link.href ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
                                     }`} />
-                                {/* Hover background */}
-                                <span className="absolute inset-0 bg-primary-red/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
                             </motion.a>
                         ))}
-
-                        {/* Divider */}
-                        <div className="w-px h-6 bg-gradient-to-b from-transparent via-gray-300 to-transparent mx-2" />
 
                         {/* CTA Button - Teklif Al */}
                         <motion.a
                             href="#contact"
                             onClick={(e) => handleLinkClick(e, '#contact')}
-                            className="relative group ml-2"
+                            className="ml-4"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <div className="absolute -inset-1 bg-gradient-to-r from-primary-red via-red-500 to-primary-red rounded-full opacity-70 group-hover:opacity-100 blur-sm transition-all duration-300 group-hover:blur-md animate-pulse" />
-                            <div className="relative flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-primary-red to-red-600 text-white rounded-full font-semibold text-sm shadow-lg shadow-red-500/25 group-hover:shadow-red-500/40 transition-all duration-300">
-                                <Phone className="w-4 h-4" />
+                            <div className="flex items-center gap-2 px-6 py-3 bg-primary-red text-white rounded-full font-semibold text-base shadow-lg shadow-red-500/25 hover:bg-red-600 transition-all duration-300">
+                                <Phone className="w-5 h-5" />
                                 <span>Teklif Al</span>
-                                <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                             </div>
                         </motion.a>
                     </div>
