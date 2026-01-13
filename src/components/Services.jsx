@@ -51,7 +51,7 @@ export default function Services() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-32"
                 >
                     <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-500/10 px-3 py-1.5 rounded-full mb-3">
                         Hizmetlerimiz
@@ -71,7 +71,7 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="group bg-neutral-900 rounded-2xl p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/20 transition-all duration-300"
+                            className="group bg-neutral-900 rounded-2xl p-10 hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/20 transition-all duration-300"
                         >
                             <div className="w-full flex justify-center mb-6">
                                 <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
