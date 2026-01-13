@@ -16,8 +16,8 @@ export default function Projects() {
   }, [selectedYear]);
 
   return (
-    <section id="projects" className="bg-white py-28">
-      <div className="container-max px-4">
+    <section id="projects" className="section-padding bg-white">
+      <div className="container-max">
 
         {/* ================= HEADER ================= */}
         <motion.div
@@ -27,15 +27,15 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-20"
         >
-          <span className="text-primary-red font-semibold tracking-widest uppercase text-sm">
+          <span className="inline-block mb-3 text-sm font-semibold tracking-widest text-primary-red uppercase">
             Referanslarımız
           </span>
 
-          <h2 className="mt-4 text-4xl md:text-5xl font-bold text-gray-900">
+          <h2 className="heading-primary mb-6">
             İmzamızı Attığımız İşler
           </h2>
 
-          <p className="mt-6 text-lg text-gray-500 leading-relaxed">
+          <p className="text-gray-500 text-lg leading-relaxed">
             Kamu kurumlarından özel projelere kadar, her aşamasında kaliteyi
             merkeze aldığımız tamamlanmış işlerimiz.
           </p>
@@ -43,7 +43,7 @@ export default function Projects() {
 
         {/* ================= FİLTRE ================= */}
         <div className="flex justify-center mb-16">
-          <div className="inline-flex bg-gray-100 rounded-xl p-1 gap-1">
+          <div className="inline-flex gap-1 rounded-xl bg-gray-100 p-1">
             {years.map(year => {
               const active = selectedYear === year;
               return (
@@ -51,7 +51,7 @@ export default function Projects() {
                   key={year}
                   onClick={() => setSelectedYear(year)}
                   className={`
-                    px-5 py-2 rounded-lg text-sm font-medium transition
+                    px-5 py-2 rounded-lg text-sm font-medium transition-all
                     ${active
                       ? 'bg-white text-gray-900 shadow-sm'
                       : 'text-gray-500 hover:text-gray-900'}
@@ -65,31 +65,37 @@ export default function Projects() {
         </div>
 
         {/* ================= GRID ================= */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <motion.div
+          layout
+          className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3"
+        >
           <AnimatePresence>
             {filteredProjects.map(project => (
               <motion.article
                 key={project.id}
+                layout
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 24 }}
                 transition={{ duration: 0.35 }}
-                className="group rounded-2xl border border-gray-100 bg-white overflow-hidden hover:shadow-xl transition-shadow"
+                className="group overflow-hidden rounded-2xl border border-gray-100 bg-white
+                           hover:shadow-2xl transition-shadow"
               >
                 {/* Görsel */}
                 {SHOW_PROJECT_IMAGES && (
-                  <div className="relative h-56 overflow-hidden bg-gray-100">
+                  <div className="relative h-60 overflow-hidden bg-gray-100">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover transition-transform duration-500
+                                 group-hover:scale-105"
                     />
 
                     <span
-                      className={`absolute top-4 left-4 px-3 py-1 rounded-md text-xs font-semibold uppercase
+                      className={`absolute top-4 left-4 rounded-full bg-white px-3 py-1 text-xs font-semibold shadow
                         ${project.category === 'Kamu'
-                          ? 'bg-white text-blue-700'
-                          : 'bg-white text-emerald-700'}
+                          ? 'text-blue-700'
+                          : 'text-emerald-700'}
                       `}
                     >
                       {project.category}
@@ -98,19 +104,20 @@ export default function Projects() {
                 )}
 
                 {/* İçerik */}
-                <div className="p-6 flex flex-col h-full">
-                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                    <Calendar className="w-4 h-4 text-primary-red" />
+                <div className="flex h-full flex-col p-6">
+                  <div className="mb-3 flex items-center gap-2 text-sm text-gray-500">
+                    <Calendar className="h-4 w-4 text-primary-red" />
                     <span>{project.year}</span>
                   </div>
 
-                  <h3 className="text-xl font-semibold text-gray-900 leading-snug mb-6 group-hover:text-primary-red transition-colors">
+                  <h3 className="mb-6 text-xl font-semibold leading-snug text-gray-900
+                                 transition-colors group-hover:text-primary-red">
                     {project.title}
                   </h3>
 
-                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center text-sm text-gray-500">
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {project.location}
+                  <div className="mt-auto flex items-center gap-2 border-t border-gray-100 pt-4 text-sm text-gray-500">
+                    <MapPin className="h-4 w-4" />
+                    <span>{project.location}</span>
                   </div>
                 </div>
               </motion.article>
@@ -120,7 +127,7 @@ export default function Projects() {
 
         {/* ================= BOŞ DURUM ================= */}
         {filteredProjects.length === 0 && (
-          <div className="text-center py-24 text-gray-500">
+          <div className="py-24 text-center text-gray-500">
             Bu yıla ait proje bulunmuyor.
           </div>
         )}
