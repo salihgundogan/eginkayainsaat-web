@@ -92,10 +92,10 @@ export default function Projects() {
                     />
 
                     <span
-                      className={`absolute top-4 left-4 rounded-full bg-white px-3 py-1 text-xs font-semibold shadow
+                      className={`absolute top-4 left-4 rounded-full px-5 py-2 text-sm font-bold shadow-lg
                         ${project.category === 'Kamu'
-                          ? 'text-blue-700'
-                          : 'text-emerald-700'}
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-emerald-600 text-white'}
                       `}
                     >
                       {project.category}
