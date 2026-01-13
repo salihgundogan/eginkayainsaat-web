@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-/* ================= RESET ================= */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -14,76 +14,87 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #ffffff;
-  color: #0a0a0a;
+  font-family: theme(fontFamily.sans);
+  background-color: theme(colors.neutral-white);
+  color: theme(colors.primary-black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* ================= SCROLLBAR ================= */
+/* ------------------ */
+/* SENIOR TOUCHES */
+/* ------------------ */
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f3f4f6;
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #d1d5db;
   border-radius: 5px;
-  border: 2px solid #f3f4f6;
+  border: 2px solid #f1f1f1;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #dc2626;
+  background: theme(colors.primary-red);
 }
 
-/* ================= SELECTION ================= */
+/* Text Selection */
 ::selection {
-  background-color: #dc2626;
-  color: #ffffff;
+  background-color: theme(colors.primary-red);
+  color: white;
 }
 
-/* ================= LAYOUT UTILITIES ================= */
-
-/* Dikey spacing section’a ait */
+/* Utility Classes */
 .section-padding {
   @apply py-24 lg:py-32;
 }
 
-/* Yatay spacing + max width container’a ait */
 .container-max {
   @apply max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12;
 }
 
-/* ================= UI HELPERS ================= */
-
+/* Buttons */
 .btn-primary {
-  @apply inline-flex items-center justify-center
-         bg-gradient-to-b from-primary-red to-primary-darkred
-         text-white font-semibold
-         px-8 py-4 rounded-xl
-         shadow-lg shadow-red-600/30
-         transition-all duration-300
-         hover:shadow-xl hover:shadow-red-600/40
-         hover:-translate-y-0.5
-         active:translate-y-0 active:scale-[0.98];
+  @apply 
+    bg-gradient-to-b 
+    from-primary-red 
+    to-primary-darkred 
+    text-white 
+    font-semibold 
+    rounded-xl 
+    px-6 
+    py-3 
+    transition 
+    hover:scale-[1.02] 
+    active:scale-[0.98];
 }
 
+/* Typography */
 .heading-primary {
-  @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl
-         font-bold text-primary-black
-         leading-tight tracking-tight;
+  @apply 
+    text-3xl 
+    sm:text-4xl 
+    lg:text-5xl 
+    xl:text-6xl 
+    font-bold 
+    text-primary-black 
+    leading-tight 
+    tracking-tight;
 }
 
 .text-accent {
   @apply text-primary-red;
 }
 
+/* Cards */
 .card-padding {
   @apply p-5 sm:p-6 lg:p-8;
 }
