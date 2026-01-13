@@ -13,7 +13,7 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+        <section id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
             {/* Arkaplan Görseli */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -21,16 +21,14 @@ export default function Hero() {
                     alt="Modern Architecture"
                     className="w-full h-full object-cover object-center scale-105" // Hafif zoom ile derinlik
                 />
-                {/* Gradient: Yazıların olduğu SOL taraf daha koyu, sağ taraf aydınlık */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
+                {/* Gradient: Merkeze odaklayan modern bir karartma */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
             </div>
 
-            {/* İçerik Alanı - SOLA YASLI (Orijinal Yapı Korundu) */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
-                <div className="max-w-3xl">
+            {/* İçerik Alanı - MERKEZLİ (CENTERED) */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center">
+                <div className="max-w-4xl">
                     
-                    {/* Rozet (Badge) Kaldırıldı */}
-
                     {/* Ana Başlık */}
                     <motion.h1
                         variants={fadeUpVariants}
@@ -39,7 +37,7 @@ export default function Hero() {
                         custom={0.1}
                         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-tight"
                     >
-                        Zorlu Projelerin <br />
+                        Zorlu Projelerin <br className="hidden sm:block" />
                         <span className="text-primary-red relative inline-block">Çözüm Ortağı</span>
                     </motion.h1>
 
@@ -49,19 +47,19 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         custom={0.3}
-                        className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl font-light"
+                        className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto font-light"
                     >
                         Kamu yapılarından nitelikli konut projelerine kadar; taahhüt ettiğimiz tarihte,
                         taahhüt ettiğimiz kalitede teslim ediyoruz. Risk yok, tecrübe var.
                     </motion.p>
 
-                    {/* Butonlar - Sola Hizalı */}
+                    {/* Butonlar - Ortaya Hizalı */}
                     <motion.div
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                         custom={0.5}
-                        className="flex flex-col sm:flex-row gap-5 justify-start items-start sm:items-center"
+                        className="flex flex-col sm:flex-row gap-5 justify-center items-center"
                     >
                         {/* 1. Buton: Kırmızı Dolgulu */}
                         <a
