@@ -1,182 +1,177 @@
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from 'lucide-react';
 import { SITE_CONFIG } from '../config/settings';
 
 const contactInfo = [
     {
         icon: Phone,
-        label: 'Telefon',
+        label: 'Bizi Arayın',
         value: SITE_CONFIG.phone,
         href: `tel:${SITE_CONFIG.phone.replace(/\s/g, '')}`,
+        action: 'Hemen Ara'
     },
     {
         icon: Mail,
-        label: 'E-posta',
+        label: 'E-posta Gönderin',
         value: SITE_CONFIG.email,
         href: `mailto:${SITE_CONFIG.email}`,
+        action: 'Mail Gönder'
     },
     {
         icon: MapPin,
-        label: 'Adres',
+        label: 'Merkez Ofis',
         value: SITE_CONFIG.address,
-        href: '#',
+        href: 'https://maps.google.com', // Gerçek harita linki eklenebilir
+        action: 'Yol Tarifi Al'
     },
     {
         icon: Clock,
         label: 'Çalışma Saatleri',
-        value: 'Pzt - Cmt: 08:00 - 18:00',
+        value: 'Pzt - Cmt: 08:30 - 18:00',
         href: '#',
+        action: 'Şu an Açık'
     },
 ];
 
 export default function Contact() {
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert('Mesajınız alındı! En kısa sürede size dönüş yapacağız.');
+        // Gerçek bir backend bağlantısı veya form servisi (örn: Formspree) buraya eklenecek.
+        alert('Mesajınız başarıyla alındı! Ekibimiz en kısa sürede size dönüş yapacaktır.');
     };
 
     return (
-        <section id="contact" className="bg-white section-padding">
-            <div className="container-max">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-12"
-                >
-                    <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-50 px-3 py-1.5 rounded-full mb-3">
-                        İletişim
-                    </span>
-                    <h2 className="heading-primary">Bizimle İletişime Geçin</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto mt-4 text-base">
-                        Projeleriniz için ücretsiz keşif ve fiyat teklifi almak için bize ulaşın.
-                    </p>
-                </motion.div>
-
-                <div className="grid lg:grid-cols-2 gap-12">
-                    {/* Contact Info */}
+        <section id="contact" className="bg-gray-50 py-24 relative overflow-hidden">
+            
+            {/* Background Decor */}
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-100/50 skew-x-12 translate-x-20 z-0" />
+            
+            <div className="container mx-auto px-4 md:px-8 relative z-10">
+                {/* Header Section */}
+                <div className="text-center max-w-2xl mx-auto mb-16">
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="space-y-6"
                     >
-                        <div>
-                            <h3 className="text-xl font-bold text-primary-black mb-3">
-                                İletişim Bilgileri
-                            </h3>
-                            <p className="text-gray-600 text-sm">
-                                Projeleriniz hakkında görüşmek veya teklif almak için aşağıdaki
-                                iletişim kanallarından bize ulaşabilirsiniz.
-                            </p>
-                        </div>
+                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm">
+                            İletişim
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
+                            Projenizi Birlikte Hayata Geçirelim
+                        </h2>
+                        <p className="text-gray-600">
+                            Aklınızdaki sorular veya proje teklifleri için formu doldurabilir ya da doğrudan bize ulaşabilirsiniz.
+                        </p>
+                    </motion.div>
+                </div>
 
-                        <div className="space-y-5">
-                            {contactInfo.map((info) => (
-                                <a
-                                    key={info.label}
-                                    href={info.href}
-                                    className="flex items-start gap-4 group"
-                                >
-                                    <div className="w-11 h-11 bg-primary-red/10 rounded-xl flex items-center justify-center group-hover:bg-primary-red transition-colors duration-300 shrink-0">
-                                        <info.icon className="w-5 h-5 text-primary-red group-hover:text-white transition-colors duration-300" />
+                <div className="grid lg:grid-cols-5 gap-12 items-start">
+                    
+                    {/* Contact Info (Left Side - 2 Cols) */}
+                    <motion.div 
+                        className="lg:col-span-2 space-y-6"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        {contactInfo.map((info, index) => (
+                            <a
+                                key={index}
+                                href={info.href}
+                                target={info.icon === MapPin ? "_blank" : "_self"}
+                                rel="noreferrer"
+                                className="group flex items-start gap-5 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md border border-gray-100 transition-all duration-300"
+                            >
+                                <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary-red transition-colors duration-300">
+                                    <info.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors duration-300" />
+                                </div>
+                                <div className="flex-1">
+                                    <h4 className="font-bold text-gray-900 mb-1">{info.label}</h4>
+                                    <p className="text-gray-600 text-sm mb-2">{info.value}</p>
+                                    <div className="flex items-center gap-2 text-xs font-semibold text-primary-red opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                        {info.action} <ArrowRight className="w-3 h-3" />
                                     </div>
-                                    <div>
-                                        <div className="text-xs text-gray-500 font-medium">{info.label}</div>
-                                        <div className="text-primary-black font-semibold text-sm group-hover:text-primary-red transition-colors duration-300">
-                                            {info.value}
-                                        </div>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
+                                </div>
+                            </a>
+                        ))}
                     </motion.div>
 
-                    {/* Contact Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
+                    {/* Contact Form (Right Side - 3 Cols) */}
+                    <motion.div 
+                        className="lg:col-span-3"
+                        initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
                         <form
                             onSubmit={handleSubmit}
-                            className="bg-white rounded-2xl p-6 space-y-5 shadow-lg shadow-black/5 border border-gray-100"
+                            className="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-gray-200/50 border border-gray-100"
                         >
-                            <div className="grid sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label className="block text-sm font-semibold text-primary-black mb-2">
-                                        Adınız Soyadınız
-                                    </label>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-8">
+                                Hızlı Teklif Formu
+                            </h3>
+                            
+                            <div className="grid sm:grid-cols-2 gap-6 mb-6">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-semibold text-gray-700">Adınız Soyadınız</label>
                                     <input
                                         type="text"
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300"
                                         placeholder="Adınız Soyadınız"
                                     />
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-semibold text-primary-black mb-2">
-                                        Telefon
-                                    </label>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-semibold text-gray-700">Telefon Numaranız</label>
                                     <input
                                         type="tel"
                                         required
-                                        className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300"
                                         placeholder="0(5XX) XXX XX XX"
                                     />
                                 </div>
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-semibold text-primary-black mb-2">
-                                    E-posta
-                                </label>
-                                <input
-                                    type="email"
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
-                                    placeholder="ornek@email.com"
-                                />
+                            <div className="grid sm:grid-cols-2 gap-6 mb-6">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-semibold text-gray-700">E-posta Adresiniz</label>
+                                    <input
+                                        type="email"
+                                        required
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300"
+                                        placeholder="ornek@sirket.com"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-semibold text-gray-700">Konu</label>
+                                    <select
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300 appearance-none"
+                                    >
+                                        <option>Genel Bilgi</option>
+                                        <option>Proje Teklifi</option>
+                                        <option>İş Başvurusu</option>
+                                        <option>Diğer</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div>
-                                <label className="block text-sm font-semibold text-primary-black mb-2">
-                                    Konu
-                                </label>
-                                <select
-                                    required
-                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all bg-neutral-lightgray text-sm"
-                                >
-                                    <option value="">Konu Seçin</option>
-                                    <option value="teklif">Fiyat Teklifi</option>
-                                    <option value="bilgi">Bilgi Almak</option>
-                                    <option value="isbirligi">İş Birliği</option>
-                                    <option value="diger">Diğer</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-semibold text-primary-black mb-2">
-                                    Mesajınız
-                                </label>
+                            <div className="space-y-2 mb-8">
+                                <label className="text-sm font-semibold text-gray-700">Mesajınız</label>
                                 <textarea
                                     required
                                     rows={4}
-                                    className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary-red focus:ring-0 outline-none transition-all resize-none bg-neutral-lightgray text-sm"
-                                    placeholder="Projeniz hakkında bilgi verin..."
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300 resize-none"
+                                    placeholder="Projenizden kısaca bahsedin..."
                                 />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full btn-primary flex items-center justify-center gap-2"
+                                className="w-full sm:w-auto px-8 py-4 bg-primary-red text-white font-bold rounded-xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/30 transform active:scale-95 transition-all duration-300 flex items-center justify-center gap-3"
                             >
-                                <Send className="w-4 h-4" />
-                                Mesaj Gönder
+                                <Send className="w-5 h-5" />
+                                Teklifi Gönder
                             </button>
                         </form>
                     </motion.div>
