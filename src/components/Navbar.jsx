@@ -69,24 +69,18 @@ export default function Navbar() {
                     </motion.a>
 
                     {/* Desktop Menu - Sağ tarafta */}
-                    <div className="hidden lg:flex items-center gap-6">
+                    <div className="hidden lg:flex items-center gap-8 ml-auto">
                         {navLinks.slice(0, -1).map((link, index) => (
                             <motion.a
                                 key={link.name}
                                 href={link.href}
                                 onClick={(e) => handleLinkClick(e, link.href)}
-                                className={`relative px-3 py-2 text-base font-medium transition-all duration-300 ${activeLink === link.href
-                                        ? 'text-primary-red'
-                                        : 'text-gray-700 hover:text-primary-red'
-                                    }`}
+                                className="text-base font-medium text-black cursor-pointer"
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                             >
                                 {link.name}
-                                {/* Active indicator */}
-                                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary-red transition-all duration-300 ${activeLink === link.href ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-                                    }`} />
                             </motion.a>
                         ))}
 
@@ -94,14 +88,12 @@ export default function Navbar() {
                         <motion.a
                             href="#contact"
                             onClick={(e) => handleLinkClick(e, '#contact')}
-                            className="ml-4"
+                            className="flex items-center gap-2 text-primary-red font-semibold text-base hover:text-red-700 transition-colors cursor-pointer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <div className="flex items-center gap-2 px-6 py-3 bg-primary-red text-white rounded-full font-semibold text-base shadow-lg shadow-red-500/25 hover:bg-red-600 transition-all duration-300">
-                                <Phone className="w-5 h-5" />
-                                <span>Teklif Al</span>
-                            </div>
+                            <Phone className="w-5 h-5" />
+                            <span>Teklif Al</span>
                         </motion.a>
                     </div>
 
@@ -140,8 +132,8 @@ export default function Navbar() {
                                         href={link.href}
                                         onClick={(e) => handleLinkClick(e, link.href)}
                                         className={`flex items-center justify-between p-4 rounded-2xl transition-all duration-300 group ${activeLink === link.href
-                                                ? 'bg-primary-red/10 text-primary-red'
-                                                : 'hover:bg-gray-100 text-gray-700'
+                                            ? 'bg-primary-red/10 text-primary-red'
+                                            : 'hover:bg-gray-100 text-gray-700'
                                             }`}
                                         initial={{ opacity: 0, x: 20 }}
                                         animate={{ opacity: 1, x: 0 }}
