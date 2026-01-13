@@ -17,9 +17,9 @@ export default function Projects() {
         : projects.filter((p) => p.year === selectedYear);
 
     return (
-        <section id="projects" className="bg-white py-24 relative">
-            <div className="container mx-auto px-4 md:px-8">
-                
+        <section id="projects" className="bg-white section-padding relative">
+            <div className="container-max">
+
                 {/* Header Section */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                     <motion.div
@@ -44,15 +44,14 @@ export default function Projects() {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="bg-gray-100 p-1 rounded-xl inline-flex self-start md:self-end"
+                        className="bg-gray-100 p-1.5 rounded-xl inline-flex gap-2 self-start md:self-end flex-wrap"
                     >
                         {years.map((year) => (
                             <button
                                 key={year}
                                 onClick={() => setSelectedYear(year)}
-                                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 z-10 ${
-                                    selectedYear === year ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'
-                                }`}
+                                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 z-10 ${selectedYear === year ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'
+                                    }`}
                             >
                                 {selectedYear === year && (
                                     <motion.div
@@ -68,7 +67,7 @@ export default function Projects() {
                 </div>
 
                 {/* Projects Grid */}
-                <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
                             <motion.div
@@ -88,7 +87,7 @@ export default function Projects() {
                                             alt={project.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
-                                        
+
                                         {/* Overlay on Hover */}
                                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                             <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -100,14 +99,13 @@ export default function Projects() {
                                 )}
 
                                 {/* Content Area */}
-                                <div className="p-6 flex flex-col flex-grow">
+                                <div className="p-5 sm:p-6 lg:p-8 flex flex-col flex-grow">
                                     {/* Tags: Category & Year */}
                                     <div className="flex items-center gap-3 mb-4">
-                                        <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide ${
-                                            project.category === 'Kamu' 
-                                                ? 'bg-blue-50 text-blue-700 border border-blue-100' 
-                                                : 'bg-emerald-50 text-emerald-700 border border-emerald-100'
-                                        }`}>
+                                        <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide ${project.category === 'Kamu'
+                                            ? 'bg-blue-50 text-blue-700 border border-blue-100'
+                                            : 'bg-emerald-50 text-emerald-700 border border-emerald-100'
+                                            }`}>
                                             {project.category}
                                         </span>
                                         <span className="flex items-center gap-1 text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
@@ -131,7 +129,7 @@ export default function Projects() {
                         ))}
                     </AnimatePresence>
                 </motion.div>
-                
+
                 {/* Empty State Warning */}
                 {filteredProjects.length === 0 && (
                     <div className="text-center py-20 text-gray-500">

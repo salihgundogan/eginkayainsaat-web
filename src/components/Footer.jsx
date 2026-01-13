@@ -23,7 +23,7 @@ export default function Footer() {
     return (
         <footer className="bg-primary-black text-white">
             <div className="container-max section-padding py-12">
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     {/* Logo & Description */}
                     <div className="lg:col-span-2">
                         <a
@@ -34,7 +34,7 @@ export default function Footer() {
                             <img
                                 src="/logo-white.svg"
                                 alt="Eğinkaya İnşaat Logo"
-                                className="h-20 w-auto"
+                                className="h-14 lg:h-16 w-auto"
                             />
                         </a>
                         <p className="text-gray-400 leading-relaxed max-w-md text-sm">

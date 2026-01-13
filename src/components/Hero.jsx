@@ -18,7 +18,7 @@ export default function Hero() {
             {/* Content Container */}
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
                 <div className="max-w-3xl">
-                    
+
                     {/* Badge / Tagline */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
+                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
                     >
                         Geleceği <span className="text-primary-red">Sağlam Temeller</span> Üzerine Kuruyoruz
                     </motion.h1>
@@ -65,7 +65,7 @@ export default function Hero() {
                             Projelerimiz
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </a>
-                        
+
                         <a
                             href="#contact"
                             className="group flex items-center justify-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-sm border border-white/20 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:bg-white hover:text-primary-black hover:scale-105"

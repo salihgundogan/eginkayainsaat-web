@@ -41,12 +41,12 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="bg-gray-50 py-24 relative overflow-hidden">
-            
+        <section id="contact" className="bg-gray-50 section-padding relative overflow-hidden">
+
             {/* Background Decor */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-100/50 skew-x-12 translate-x-20 z-0" />
-            
-            <div className="container mx-auto px-4 md:px-8 relative z-10">
+
+            <div className="container-max relative z-10">
                 {/* Header Section */}
                 <div className="text-center max-w-2xl mx-auto mb-16">
                     <motion.div
@@ -66,10 +66,10 @@ export default function Contact() {
                     </motion.div>
                 </div>
 
-                <div className="grid lg:grid-cols-5 gap-12 items-start">
-                    
+                <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+
                     {/* Contact Info (Left Side - 2 Cols) */}
-                    <motion.div 
+                    <motion.div
                         className="lg:col-span-2 space-y-6"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -98,7 +98,7 @@ export default function Contact() {
                     </motion.div>
 
                     {/* Contact Form (Right Side - 3 Cols) */}
-                    <motion.div 
+                    <motion.div
                         className="lg:col-span-3"
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -106,13 +106,13 @@ export default function Contact() {
                     >
                         <form
                             onSubmit={handleSubmit}
-                            className="bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-gray-200/50 border border-gray-100"
+                            className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl shadow-gray-200/50 border border-gray-100"
                         >
                             <h3 className="text-2xl font-bold text-gray-900 mb-8">
                                 Hızlı Teklif Formu
                             </h3>
-                            
-                            <div className="grid sm:grid-cols-2 gap-6 mb-6">
+
+                            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-6">
                                 <div className="space-y-2">
                                     <label className="text-sm font-semibold text-gray-700">Adınız Soyadınız</label>
                                     <input
