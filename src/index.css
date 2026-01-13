@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* Base Reset */
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -14,45 +14,42 @@ html {
 }
 
 body {
-  font-family: theme(fontFamily.sans);
-  background-color: theme(colors.neutral-white);
-  color: theme(colors.primary-black);
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #ffffff;
+  color: #0a0a0a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* ------------------ */
-/* SENIOR TOUCHES */
-/* ------------------ */
-
-/* Custom Scrollbar */
+/* ================= SCROLLBAR ================= */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f3f4f6;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #d1d5db;
   border-radius: 5px;
-  border: 2px solid #f1f1f1;
+  border: 2px solid #f3f4f6;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme(colors.primary-red);
+  background: #dc2626;
 }
 
-/* Text Selection */
+/* ================= SELECTION ================= */
 ::selection {
-  background-color: theme(colors.primary-red);
-  color: white;
+  background-color: #dc2626;
+  color: #ffffff;
 }
 
-/* Utility Classes */
+/* ================= LAYOUT UTILITIES ================= */
+
 .section-padding {
   @apply py-24 lg:py-32;
 }
@@ -61,40 +58,30 @@ body {
   @apply max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12;
 }
 
-/* Buttons */
+/* ================= UI HELPERS ================= */
+
 .btn-primary {
-  @apply 
-    bg-gradient-to-b 
-    from-primary-red 
-    to-primary-darkred 
-    text-white 
-    font-semibold 
-    rounded-xl 
-    px-6 
-    py-3 
-    transition 
-    hover:scale-[1.02] 
-    active:scale-[0.98];
+  @apply inline-flex items-center justify-center
+         bg-gradient-to-b from-red-600 to-red-800
+         text-white font-semibold
+         px-8 py-4 rounded-xl
+         shadow-lg shadow-red-600/30
+         transition-all duration-300
+         hover:shadow-xl hover:shadow-red-600/40
+         hover:-translate-y-0.5
+         active:translate-y-0 active:scale-[0.98];
 }
 
-/* Typography */
 .heading-primary {
-  @apply 
-    text-3xl 
-    sm:text-4xl 
-    lg:text-5xl 
-    xl:text-6xl 
-    font-bold 
-    text-primary-black 
-    leading-tight 
-    tracking-tight;
+  @apply text-3xl sm:text-4xl lg:text-5xl xl:text-6xl
+         font-bold text-black
+         leading-tight tracking-tight;
 }
 
 .text-accent {
-  @apply text-primary-red;
+  @apply text-red-600;
 }
 
-/* Cards */
 .card-padding {
   @apply p-5 sm:p-6 lg:p-8;
 }
