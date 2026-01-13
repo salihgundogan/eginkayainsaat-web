@@ -6,6 +6,8 @@
   --color-primary-black: #0a0a0a;
   --color-primary-red: #dc2626;
   --color-primary-darkred: #b91c1c;
+  /* Yeni bir renk tonu ekleyelim gradient için */
+  --color-primary-red-darker: #b91c1c; 
   --color-neutral-white: #ffffff;
   --color-neutral-lightgray: #f8fafc;
   --color-neutral-darkgray: #1f2937;
@@ -21,7 +23,7 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-tap-highlight-color: transparent; /* Mobilde tıklama gölgesini kaldırır */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -30,12 +32,12 @@ body {
   color: var(--color-primary-black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Yatay taşmaları engelle */
+  overflow-x: hidden;
 }
 
 /* --- SENIOR TOUCHES --- */
 
-/* 1. Custom Scrollbar (Premium His) */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -52,26 +54,29 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-red); /* Hover olunca kızarır */
+  background: var(--color-primary-red);
 }
 
-/* 2. Brand Selection Color (Kurumsal Kimlik) */
+/* Brand Selection Color */
 ::selection {
   background-color: var(--color-primary-red);
   color: white;
 }
 
-/* Utility Classes (Legacy Support & Consistency) */
+/* Utility Classes */
 .section-padding {
-  @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-28; /* Boşlukları biraz daha ferahlattım */
+  @apply px-4 sm:px-6 lg:px-8 py-20 lg:py-28;
 }
 
 .container-max {
   @apply max-w-7xl mx-auto;
 }
 
+/* REVİZE EDİLMİŞ PREMIUM BUTON 
+   Daha tok, daha sağlam ve etkileşimi güçlü.
+*/
 .btn-primary {
-  @apply bg-primary-red hover:bg-primary-darkred text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform active:scale-95 shadow-md hover:shadow-lg hover:shadow-red-500/30;
+  @apply relative bg-gradient-to-b from-primary-red to-primary-red-darker text-white font-bold py-4 px-8 rounded-xl border border-red-600/50 shadow-lg shadow-red-900/20 transition-all duration-300 hover:shadow-xl hover:shadow-red-600/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] active:shadow-inner tracking-wide;
 }
 
 .heading-primary {
