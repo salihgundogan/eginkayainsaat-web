@@ -65,7 +65,7 @@ export default function Services() {
                 </motion.div>
 
                 {/* Services Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
                         <motion.div
                             key={service.title}
@@ -73,12 +73,12 @@ export default function Services() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-primary-red/50 transition-all duration-300 text-center flex flex-col items-center"
+                            className="group bg-neutral-900 rounded-2xl p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/20 transition-all duration-300"
                         >
-                            <div className="w-12 h-12 bg-primary-red/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-red transition-colors duration-300">
-                                <service.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors duration-300" />
+                            <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <service.icon className="w-7 h-7 text-primary-red" />
                             </div>
-                            <h3 className="text-lg font-bold text-white mb-2">{service.title}</h3>
+                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-red transition-colors">{service.title}</h3>
                             <p className="text-gray-400 leading-relaxed text-sm">{service.description}</p>
                         </motion.div>
                     ))}
