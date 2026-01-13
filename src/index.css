@@ -2,17 +2,6 @@
 
 @import "tailwindcss";
 
-@theme {
-  --color-primary-black: #0a0a0a;
-  --color-primary-red: #dc2626;
-  --color-primary-darkred: #b91c1c;
-  --color-primary-red-darker: #b91c1c;
-  --color-neutral-white: #ffffff;
-  --color-neutral-lightgray: #f8fafc;
-  --color-neutral-darkgray: #1f2937;
-  --font-family-sans: 'Inter', system-ui, sans-serif;
-}
-
 /* Base Reset & Settings */
 * {
   margin: 0;
@@ -64,12 +53,12 @@ body {
 
 /* Utility Classes */
 .section-padding {
-  @apply px-4 sm:px-6 lg:px-8 py-24 lg:py-40;
+  @apply py-24 lg:py-32;
 }
 
 /* REVİZE EDİLDİ: DAHA DA GENİŞ VE FERAH KONTEYNER */
 .container-max {
-  @apply max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16;
+  @apply max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12;
 }
 
 /* Premium Buton Stili */
