@@ -20,8 +20,9 @@ export default function Projects() {
             <div className="container-max">
 
                 {/* --- 1. BAŞLIK BÖLÜMÜ (GARANTİ ORTALANMIŞ) --- */}
+                {/* --- 1. BAŞLIK BÖLÜMÜ (GARANTİ ORTALANMIŞ) --- */}
                 {/* flex-col ve items-center ile her şeyi alt alta ve ortaya diziyoruz */}
-                <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16">
+                <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16 px-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +36,7 @@ export default function Projects() {
                         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                             İmzamızı Attığımız İşler
                         </h2>
-                        <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto text-center">
                             Kamu kurumlarından özel konutlara kadar, her detayında kaliteyi hedeflediğimiz tamamlanan projelerimiz.
                         </p>
                     </motion.div>
@@ -48,8 +49,8 @@ export default function Projects() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        // Buton grubu kapsayıcısı: Daha ferah layout
-                        className="bg-white p-3 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
+                        // Buton grubu kapsayıcısı: Daha ferah layout (p-5 yapıldı)
+                        className="bg-white p-5 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
                     >
                         <div className="flex gap-3 sm:gap-6 p-2">
                             {years.map((year) => (
@@ -58,8 +59,8 @@ export default function Projects() {
                                     onClick={() => setSelectedYear(year)}
                                     // Butonlar: Daha geniş ve ferah
                                     className={`relative px-10 py-5 sm:px-14 sm:py-6 text-xl sm:text-2xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap outline-none outline-none focus:outline-none ${selectedYear === year
-                                            ? 'text-white'
-                                            : 'text-gray-400 hover:text-gray-900'
+                                        ? 'text-white'
+                                        : 'text-gray-400 hover:text-gray-900'
                                         }`}
                                 >
                                     {selectedYear === year && (
@@ -78,7 +79,7 @@ export default function Projects() {
 
                 {/* --- 3. PROJELER IZGARASI --- */}
                 {/* GAP ARTTIRILDI: gap-8 -> gap-10 lg:gap-16 */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16 justify-items-center">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
                             <motion.div
@@ -105,8 +106,8 @@ export default function Projects() {
                                         {/* Kategori Etiketi - Konum Sıkılaştırıldı */}
                                         <div className="absolute top-8 left-8">
                                             <span className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-md ${project.category === 'Kamu'
-                                                    ? 'bg-blue-600/90 text-white'
-                                                    : 'bg-emerald-600/90 text-white'
+                                                ? 'bg-blue-600/90 text-white'
+                                                : 'bg-emerald-600/90 text-white'
                                                 }`}>
                                                 {project.category}
                                             </span>
