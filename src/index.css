@@ -64,15 +64,12 @@ body {
 
 /* Utility Classes */
 .section-padding {
-  @apply px-4 sm:px-6 lg:px-8 py-24 lg:py-32;
+  @apply px-4 sm:px-6 lg:px-8 py-24 lg:py-40;
 }
 
-/* REVİZE EDİLDİ: DAHA GENİŞ KONTEYNER
-   max-w-7xl yerine max-w-[1600px] kullanarak
-   içeriği büyük ekranlarda daha ferah hale getirdik.
-*/
+/* REVİZE EDİLDİ: DAHA DA GENİŞ VE FERAH KONTEYNER */
 .container-max {
-  @apply max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8;
+  @apply max-w-[1700px] mx-auto px-6 sm:px-10 lg:px-16;
 }
 
 /* Premium Buton Stili */

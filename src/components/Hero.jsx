@@ -28,7 +28,7 @@ export default function Hero() {
             {/* İçerik Alanı - MERKEZLİ (CENTERED) */}
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center">
                 <div className="max-w-4xl">
-                    
+
                     {/* Ana Başlık */}
                     <motion.h1
                         variants={fadeUpVariants}
@@ -59,21 +59,21 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         custom={0.5}
-                        className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+                        className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                     >
                         {/* 1. Buton: Kırmızı Dolgulu */}
                         <a
                             href="#projects"
-                            className="group w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-primary-red text-white rounded-md font-bold text-base transition-all duration-300 hover:bg-red-700 shadow-lg shadow-red-900/20 hover:shadow-red-700/40 active:scale-[0.98]"
+                            className="group w-full sm:w-auto flex items-center justify-center gap-4 px-10 py-5 bg-primary-red text-white rounded-xl font-bold text-lg transition-all duration-300 hover:bg-red-700 shadow-xl shadow-red-900/20 hover:shadow-red-700/40 active:scale-[0.98]"
                         >
                             Referanslarımız
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                         </a>
 
                         {/* 2. Buton: Şeffaf Çerçeveli */}
                         <a
                             href="#contact"
-                            className="group w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-transparent text-white border-2 border-white/30 hover:border-white rounded-md font-bold text-base transition-all duration-300 hover:bg-white hover:text-primary-black active:scale-[0.98]"
+                            className="group w-full sm:w-auto flex items-center justify-center px-10 py-5 bg-white/5 backdrop-blur-sm text-white border-2 border-white/20 hover:border-white rounded-xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-primary-black active:scale-[0.98]"
                         >
                             Teklif Alın
                         </a>

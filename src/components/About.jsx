@@ -57,7 +57,7 @@ export default function About() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
-                        className="grid grid-cols-2 gap-4 lg:gap-6"
+                        className="grid grid-cols-2 gap-6 lg:gap-8"
                     >
                         {stats.map((stat, index) => (
                             <motion.div
@@ -66,13 +66,13 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
                                 viewport={{ once: true }}
-                                className="bg-white p-5 sm:p-6 lg:p-8 rounded-2xl shadow-lg shadow-black/5 hover:shadow-xl transition-all duration-300 group flex flex-col items-center justify-center text-center border border-gray-100"
+                                className="bg-white p-6 sm:p-8 lg:p-12 rounded-[2rem] shadow-lg shadow-black/5 hover:shadow-xl transition-all duration-300 group flex flex-col items-center justify-center text-center border border-gray-100 h-full"
                             >
-                                <div className="w-12 h-12 bg-primary-red/10 rounded-xl flex items-center justify-center mb-3 group-hover:bg-primary-red transition-colors duration-300">
-                                    <stat.icon className="w-6 h-6 text-primary-red group-hover:text-white transition-colors duration-300" />
+                                <div className="w-16 h-16 lg:w-20 lg:h-20 bg-primary-red/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-red transition-colors duration-300">
+                                    <stat.icon className="w-8 h-8 lg:w-10 lg:h-10 text-primary-red group-hover:text-white transition-colors duration-300" />
                                 </div>
-                                <div className="text-3xl font-bold text-primary-black">{stat.value}</div>
-                                <div className="text-gray-500 font-medium text-sm mt-1">{stat.label}</div>
+                                <div className="text-3xl lg:text-4xl font-bold text-primary-black mb-2">{stat.value}</div>
+                                <div className="text-gray-500 font-medium text-base lg:text-lg">{stat.label}</div>
                             </motion.div>
                         ))}
                     </motion.div>

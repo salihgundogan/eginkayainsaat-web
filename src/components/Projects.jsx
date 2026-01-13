@@ -44,24 +44,23 @@ export default function Projects() {
                 {/* --- 2. BÜSBÜYÜK YIL MENÜSÜ (TAM ORTADA) --- */}
                 {/* w-full ve justify-center ile butonu ekranın tam ortasına alıyoruz */}
                 <div className="flex justify-center w-full mb-24">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        // Buton grubu kapsayıcısı: Beyaz, gölgeli ve yuvarlak
-                        className="bg-white p-2 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
+                        // Buton grubu kapsayıcısı: Daha ferah layout
+                        className="bg-white p-3 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
                     >
-                        <div className="flex gap-2 sm:gap-4 p-1">
+                        <div className="flex gap-3 sm:gap-6 p-2">
                             {years.map((year) => (
                                 <button
                                     key={year}
                                     onClick={() => setSelectedYear(year)}
-                                    // Butonlar: İri, dolgun ve okunaklı
-                                    className={`relative px-8 py-4 sm:px-12 sm:py-5 text-lg sm:text-2xl font-boldSX rounded-full transition-all duration-300 z-10 whitespace-nowrap outline-none min-w-[120px] ${
-                                        selectedYear === year 
-                                            ? 'text-white' 
+                                    // Butonlar: Daha geniş ve ferah
+                                    className={`relative px-10 py-5 sm:px-14 sm:py-6 text-xl sm:text-2xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap outline-none outline-none focus:outline-none ${selectedYear === year
+                                            ? 'text-white'
                                             : 'text-gray-400 hover:text-gray-900'
-                                    }`}
+                                        }`}
                                 >
                                     {selectedYear === year && (
                                         <motion.div
@@ -78,7 +77,8 @@ export default function Projects() {
                 </div>
 
                 {/* --- 3. PROJELER IZGARASI --- */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                {/* GAP ARTTIRILDI: gap-8 -> gap-10 lg:gap-16 */}
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
                             <motion.div
@@ -88,27 +88,26 @@ export default function Projects() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.4 }}
-                                className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500HV flex flex-col h-full transform hover:-translate-y-2"
+                                className="group bg-white rounded-[2.5rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 flex flex-col h-full transform hover:-translate-y-2"
                             >
                                 {/* Görsel Alanı */}
                                 {SHOW_PROJECT_IMAGES && (
-                                    <div className="relative h-72 sm:h-80 overflow-hidden bg-gray-100">
+                                    <div className="relative h-80 sm:h-96 overflow-hidden bg-gray-100 border-b border-gray-50">
                                         <img
                                             src={project.image}
                                             alt={project.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
-                                        
+
                                         {/* Overlay */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
-                                        {/* Kategori Etiketi */}
-                                        <div className="absolute top-6 left-6">
-                                            <span className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-md ${
-                                                project.category === 'Kamu' 
-                                                ? 'bg-blue-600/90 text-white' 
-                                                : 'bg-emerald-600/90 text-white'
-                                            }`}>
+                                        {/* Kategori Etiketi - Konum Sıkılaştırıldı */}
+                                        <div className="absolute top-8 left-8">
+                                            <span className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-md ${project.category === 'Kamu'
+                                                    ? 'bg-blue-600/90 text-white'
+                                                    : 'bg-emerald-600/90 text-white'
+                                                }`}>
                                                 {project.category}
                                             </span>
                                         </div>
@@ -123,19 +122,21 @@ export default function Projects() {
                                     </div>
                                 )}
 
-                                {/* İçerik Alanı */}
-                                <div className="p-8 md:p-10 flex flex-col flex-grow">
-                                    <div className="flex items-center gap-2 mb-4 text-sm font-semibold text-gray-400">
-                                        <Calendar className="w-4 h-4 text-primary-red" />
+                                {/* İçerik Alanı - DAHA FAZLA PADDING */}
+                                <div className="p-10 lg:p-12 flex flex-col flex-grow">
+                                    <div className="flex items-center gap-3 mb-6 text-sm font-semibold text-gray-400">
+                                        <div className="p-2 bg-red-50 rounded-full text-primary-red">
+                                            <Calendar className="w-4 h-4" />
+                                        </div>
                                         <span>{project.year}</span>
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-primary-red transition-colors">
+                                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 leading-tight group-hover:text-primary-red transition-colors">
                                         {project.title}
                                     </h3>
 
-                                    <div className="mt-auto pt-6 border-t border-gray-100 flex items-center text-gray-500 font-medium">
-                                        <MapPin className="w-5 h-5 mr-2 text-gray-400" />
+                                    <div className="mt-auto pt-8 border-t border-gray-100 flex items-center text-gray-500 font-medium">
+                                        <MapPin className="w-5 h-5 mr-3 text-gray-400" />
                                         {project.location}
                                     </div>
                                 </div>

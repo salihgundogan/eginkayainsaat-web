@@ -54,24 +54,24 @@ function ServiceCard({ service, index }) {
             whileHover={{ y: -10 }}
             className="group relative overflow-hidden"
         >
-            {/* Card Container */}
-            <div className="bg-white rounded-2xl p-10 shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-300 flex flex-col items-center text-center">
+            {/* Card Container - PADDING ARTTIRILDI (p-10 -> p-12 lg:p-14) */}
+            <div className="bg-white rounded-[2rem] p-10 lg:p-14 shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-300 flex flex-col items-center text-center h-full">
 
                 {/* Top Border Animation */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-red to-red-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-red to-red-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
-                {/* Icon Container */}
-                <div className="w-20 h-20 rounded-2xl bg-red-50 flex items-center justify-center mb-8 group-hover:bg-primary-red transition-all duration-300 group-hover:scale-110">
-                    <IconComponent className="w-10 h-10 text-primary-red group-hover:text-white transition-colors duration-300" />
+                {/* Icon Container - BOYUT VE MARGIN ARTTIRILDI */}
+                <div className="w-24 h-24 rounded-3xl bg-red-50 flex items-center justify-center mb-10 group-hover:bg-primary-red transition-all duration-300 group-hover:scale-110 shadow-lg shadow-red-100">
+                    <IconComponent className="w-12 h-12 text-primary-red group-hover:text-white transition-colors duration-300" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-red transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-primary-red transition-colors duration-300">
                     {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-lg">
                     {service.description}
                 </p>
             </div>
@@ -96,23 +96,23 @@ export default function Services() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm">
+                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm mb-4 block">
                             Neler Yapıyoruz?
                         </span>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-3 mb-6">
-                            İnşaat Sektöründe <span className="text-primary-red">Kusursuz Çözümler</span>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                            İnşaat Sektöründe <br /><span className="text-primary-red">Kusursuz Çözümler</span>
                         </h2>
-                        <p className="text-gray-600 text-lg leading-relaxed">
+                        <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
                             20 yılı aşkın tecrübemizle, projenizin her aşamasında kalite ve güveni inşa ediyoruz.
                         </p>
                     </motion.div>
                 </div>
 
                 {/* ===== SPACER: Başlık ile kartlar arası ===== */}
-                <div className="h-32" />
+                <div className="h-24 lg:h-40" />
 
-                {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Services Grid - GAP ARTTIRILDI */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
                     {services.map((service, index) => (
                         <ServiceCard
                             key={service.title}
