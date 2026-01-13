@@ -19,8 +19,8 @@ export default function Projects() {
         <section id="projects" className="bg-white section-padding relative">
             <div className="container-max">
 
-                {/* --- HEADER KISMI --- */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
+                {/* --- HEADER KISMI (TAM ORTADA) --- */}
+                <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
                     <motion.span 
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export default function Projects() {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                        className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
                     >
                         İmzamızı Attığımız İşler
                     </motion.h2>
@@ -46,20 +46,21 @@ export default function Projects() {
                     </motion.p>
                 </div>
 
-                {/* --- BÜSBÜYÜK YIL FİLTRESİ --- */}
+                {/* --- YIL FİLTRESİ (Revize Edildi: Dengeli Büyük) --- */}
                 <div className="flex justify-center mb-16">
                     <motion.div 
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-white p-2 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
+                        className="bg-white p-1.5 rounded-full shadow-xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
                     >
-                        <div className="flex gap-2 sm:gap-3 p-1">
+                        <div className="flex gap-2 p-1">
                             {years.map((year) => (
                                 <button
                                     key={year}
                                     onClick={() => setSelectedYear(year)}
-                                    className={`relative px-8 py-4 sm:px-12 sm:py-5 text-lg sm:text-2xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap select-none outline-none ${
+                                    // REVIZE NOTU: px ve py değerleri düşürüldü, text boyutu dengelendi. min-w eklenerek sığmama sorunu çözüldü.
+                                    className={`relative px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap min-w-[100px] flex items-center justify-center outline-none ${
                                         selectedYear === year 
                                             ? 'text-white' 
                                             : 'text-gray-400 hover:text-gray-900'
@@ -68,8 +69,8 @@ export default function Projects() {
                                     {selectedYear === year && (
                                         <motion.div
                                             layoutId="activeTab"
-                                            className="absolute inset-0 bg-primary-red rounded-full shadow-lg shadow-red-500/40 -z-10"
-                                            transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
+                                            className="absolute inset-0 bg-primary-red rounded-full shadow-md shadow-red-500/30 -z-10"
+                                            transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                                         />
                                     )}
                                     {year}
@@ -80,7 +81,7 @@ export default function Projects() {
                 </div>
 
                 {/* --- PROJELER GRID --- */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <motion.div layout className="gridHX grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
                             <motion.div
@@ -90,11 +91,11 @@ export default function Projects() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
-                                className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 flex flex-col h-full transform hover:-translate-y-2"
+                                className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-gray-200/40 transition-all duration-500 flex flex-col h-full transform hover:-translate-y-2"
                             >
                                 {/* Görsel Alanı */}
                                 {SHOW_PROJECT_IMAGES && (
-                                    <div className="relative h-72 overflow-hidden bg-gray-100">
+                                    <div className="relative h-64 sm:h-72 overflow-hidden bg-gray-100">
                                         <img
                                             src={project.image}
                                             alt={project.title}
@@ -104,9 +105,9 @@ export default function Projects() {
                                         {/* Overlay */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
-                                        {/* Kategori Etiketi (Sol Üst) */}
+                                        {/* Kategori Etiketi */}
                                         <div className="absolute top-6 left-6">
-                                            <span className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-md ${
+                                            <span className={`px-4 py-2 rounded-xl text-xs font-bold uppercasezk tracking-wider shadow-lg backdrop-blur-md ${
                                                 project.category === 'Kamu' 
                                                 ? 'bg-blue-600/90 text-white' 
                                                 : 'bg-emerald-600/90 text-white'
@@ -117,7 +118,7 @@ export default function Projects() {
 
                                         {/* Buton (Orta) */}
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                            <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
+                                            <div className="bg-white/20 backdrop-blur-mdqp border border-white/30 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
                                                 <span>Projeyi İncele</span>
                                                 <ArrowUpRight className="w-5 h-5" />
                                             </div>
