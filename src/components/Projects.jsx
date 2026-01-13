@@ -4,7 +4,7 @@ import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data/projects';
 import { SHOW_PROJECT_IMAGES } from '../config/settings';
 
-// Yılları dinamik olarak al
+// Yılları projelerden otomatik çekiyoruz
 const uniqueYears = [...new Set(projects.map(p => p.year))].sort((a, b) => b - a);
 const years = ['Tümü', ...uniqueYears];
 
@@ -19,8 +19,9 @@ export default function Projects() {
         <section id="projects" className="bg-white section-padding relative">
             <div className="container-max">
 
-                {/* --- HEADER KISMI (TAM ORTADA) --- */}
-                <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
+                {/* --- BAŞLIK KISMI (GARANTİ ORTALANMIŞ) --- */}
+                {/* w-full ve mx-auto ile tam ortaya sabitlendi */}
+                <div className="w-full max-w-3xl mx-auto flex flex-col items-center text-center mb-16">
                     <motion.span 
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -40,27 +41,28 @@ export default function Projects() {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-gray-600 text-lg leading-relaxed"
+                        className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto"
                     >
                         Kamu kurumlarından özel konutlara kadar, her detayında kaliteyi hedeflediğimiz tamamlanan projelerimiz.
                     </motion.p>
                 </div>
 
-                {/* --- YIL FİLTRESİ (Revize Edildi: Dengeli Büyük) --- */}
-                <div className="flex justify-center mb-16">
+                {/* --- BÜSBÜYÜK YIL FİLTRESİ --- */}
+                {/* mb-24 ile kartlarla arasına ciddi bir boşluk eklendi */}
+                <div className="flex justify-center mb-24">
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-white p-1.5 rounded-full shadow-xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
+                        className="bg-white p-2 rounded-full shadow-xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
                     >
                         <div className="flex gap-2 p-1">
                             {years.map((year) => (
                                 <button
                                     key={year}
                                     onClick={() => setSelectedYear(year)}
-                                    // REVIZE NOTU: px ve py değerleri düşürüldü, text boyutu dengelendi. min-w eklenerek sığmama sorunu çözüldü.
-                                    className={`relative px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap min-w-[100px] flex items-center justify-center outline-none ${
+                                    // Buton boyutları büyük ve dolgun tutuldu
+                                    className={`relative px-8 py-4 sm:px-10 sm:py-4 text-base sm:text-xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap min-w-[110px] flex items-center justify-center outline-none ${
                                         selectedYear === year 
                                             ? 'text-white' 
                                             : 'text-gray-400 hover:text-gray-900'
@@ -80,8 +82,8 @@ export default function Projects() {
                     </motion.div>
                 </div>
 
-                {/* --- PROJELER GRID --- */}
-                <motion.div layout className="gridHX grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                {/* --- PROJELER GRID (KARTLAR) --- */}
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
                             <motion.div
@@ -107,7 +109,7 @@ export default function Projects() {
 
                                         {/* Kategori Etiketi */}
                                         <div className="absolute top-6 left-6">
-                                            <span className={`px-4 py-2 rounded-xl text-xs font-bold uppercasezk tracking-wider shadow-lg backdrop-blur-md ${
+                                            <span className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-md ${
                                                 project.category === 'Kamu' 
                                                 ? 'bg-blue-600/90 text-white' 
                                                 : 'bg-emerald-600/90 text-white'
@@ -118,7 +120,7 @@ export default function Projects() {
 
                                         {/* Buton (Orta) */}
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                                            <div className="bg-white/20 backdrop-blur-mdqp border border-white/30 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
+                                            <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
                                                 <span>Projeyi İncele</span>
                                                 <ArrowUpRight className="w-5 h-5" />
                                             </div>
