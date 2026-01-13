@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -17,10 +17,12 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            // Scroll eşiğini 20px yaparak tepki süresini hızlandırdık
+            setIsScrolled(window.scrollY > 20);
 
-            // Active section detection
+            // Active section detection (Observer pattern'e daha yakın bir mantık)
             const sections = navLinks.map(link => link.href.substring(1));
+            // Tersten kontrol ederek en alttaki görünür bölümü yakalıyoruz
             for (const section of sections.reverse()) {
                 const element = document.getElementById(section);
                 if (element && window.scrollY >= element.offsetTop - 200) {
@@ -29,6 +31,7 @@ export default function Navbar() {
                 }
             }
         };
+        
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -39,43 +42,62 @@ export default function Navbar() {
         setActiveLink(href);
         const element = document.querySelector(href);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            // Header yüksekliği kadar offset bırakarak scroll et
+            const offset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
         }
     };
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                ? 'bg-white/95 backdrop-blur-xl shadow-2xl shadow-black/5'
-                : 'bg-gradient-to-b from-white via-white to-white/80'
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+                isScrolled
+                    ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-0'
+                    : 'bg-transparent py-4'
+            }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-24 gap-8">
-
-                    {/* Logo - Sol tarafta */}
+                <div 
+                    className={`flex items-center justify-between transition-all duration-300 ${
+                        isScrolled ? 'h-16' : 'h-20'
+                    }`}
+                >
+                    {/* Logo Area */}
                     <motion.a
                         href="#hero"
                         onClick={(e) => handleLinkClick(e, '#hero')}
-                        className="flex items-center gap-3 group"
+                        className="flex items-center gap-3 group relative z-50"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
                         <img
-                            src="/logo.svg"
-                            alt="Eğinkaya İnşaat Logo"
-                            className="h-16 w-auto transition-all duration-300 group-hover:brightness-110"
+                            // Scroll durumuna göre logo değişimi (Public klasöründe logo-white.svg olduğunu varsayıyorum)
+                            src={isScrolled ? "/logo.svg" : "/logo-white.svg"}
+                            alt="Eğinkaya İnşaat"
+                            className={`w-auto transition-all duration-300 ${
+                                isScrolled ? 'h-10' : 'h-12'
+                            }`}
                         />
                     </motion.a>
 
-                    {/* Desktop Menu - Sağ tarafta */}
+                    {/* Desktop Menu */}
                     <div className="hidden lg:flex items-center gap-8 ml-auto">
                         {navLinks.slice(0, -1).map((link, index) => (
                             <motion.a
                                 key={link.name}
                                 href={link.href}
                                 onClick={(e) => handleLinkClick(e, link.href)}
-                                className="text-base font-medium text-black cursor-pointer"
+                                className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+                                    isScrolled 
+                                        ? 'text-gray-600 hover:text-primary-red' 
+                                        : 'text-white/90 hover:text-white'
+                                } ${activeLink === link.href ? (isScrolled ? 'text-primary-red font-semibold' : 'text-white font-semibold') : ''}`}
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
@@ -84,15 +106,19 @@ export default function Navbar() {
                             </motion.a>
                         ))}
 
-                        {/* CTA Button - Teklif Al */}
+                        {/* Desktop CTA Button */}
                         <motion.a
                             href="#contact"
                             onClick={(e) => handleLinkClick(e, '#contact')}
-                            className="flex items-center gap-2 text-primary-red font-semibold text-base hover:text-red-700 transition-colors cursor-pointer"
+                            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                                isScrolled
+                                    ? 'bg-primary-red text-white hover:bg-red-700 shadow-lg shadow-red-500/20'
+                                    : 'bg-white text-primary-black hover:bg-gray-100 shadow-xl'
+                            }`}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <Phone className="w-5 h-5" />
+                            <Phone className={`w-4 h-4 ${isScrolled ? 'text-white' : 'text-primary-red'}`} />
                             <span>Teklif Al</span>
                         </motion.a>
                     </div>
@@ -100,64 +126,59 @@ export default function Navbar() {
                     {/* Mobile Menu Button */}
                     <motion.button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="lg:hidden relative p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors group"
+                        className={`lg:hidden relative p-2 rounded-lg transition-colors z-50 ${
+                            isScrolled || isOpen ? 'text-gray-900 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+                        }`}
                         whileTap={{ scale: 0.9 }}
                     >
-                        <div className="relative">
-                            {isOpen ? (
-                                <X className="w-5 h-5 text-primary-red" />
-                            ) : (
-                                <Menu className="w-5 h-5 text-gray-700 group-hover:text-primary-red transition-colors" />
-                            )}
-                        </div>
+                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </motion.button>
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="lg:hidden overflow-hidden"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-0 left-0 right-0 bg-white shadow-2xl lg:hidden border-b border-gray-100"
                     >
-                        <div className="bg-gradient-to-b from-gray-50 to-white border-t border-gray-100">
-                            <div className="max-w-7xl mx-auto px-4 py-6 space-y-2">
-                                {navLinks.map((link, index) => (
-                                    <motion.a
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={(e) => handleLinkClick(e, link.href)}
-                                        className={`flex items-center justify-between p-4 rounded-2xl transition-all duration-300 group ${activeLink === link.href
-                                            ? 'bg-primary-red/10 text-primary-red'
-                                            : 'hover:bg-gray-100 text-gray-700'
-                                            }`}
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.05 }}
-                                    >
-                                        <span className="font-semibold">{link.name}</span>
-                                        <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${activeLink === link.href ? 'text-primary-red' : 'text-gray-400'
-                                            } group-hover:translate-x-1`} />
-                                    </motion.a>
-                                ))}
-
-                                {/* Mobile CTA */}
+                        {/* Header yüksekliği kadar boşluk bırak ki X ikonu üstte kalsın */}
+                        <div className="h-20" /> 
+                        
+                        <div className="px-4 pb-8 space-y-2">
+                            {navLinks.map((link, index) => (
                                 <motion.a
-                                    href="#contact"
-                                    onClick={(e) => handleLinkClick(e, '#contact')}
-                                    className="flex items-center justify-center gap-3 p-4 mt-4 bg-gradient-to-r from-primary-red to-red-600 text-white rounded-2xl font-semibold shadow-lg shadow-red-500/25"
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.3 }}
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={(e) => handleLinkClick(e, link.href)}
+                                    className={`flex items-center justify-between p-4 rounded-xl transition-all ${
+                                        activeLink === link.href
+                                            ? 'bg-red-50 text-primary-red font-semibold'
+                                            : 'text-gray-600 hover:bg-gray-50'
+                                    }`}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: index * 0.05 }}
                                 >
-                                    <Phone className="w-5 h-5" />
-                                    <span>Hemen Teklif Alın</span>
+                                    {link.name}
                                 </motion.a>
-                            </div>
+                            ))}
+                            
+                            <motion.a
+                                href="#contact"
+                                onClick={(e) => handleLinkClick(e, '#contact')}
+                                className="flex items-center justify-center gap-2 w-full p-4 mt-4 bg-primary-red text-white rounded-xl font-semibold active:bg-red-700 transition-colors"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                            >
+                                <Phone className="w-5 h-5" />
+                                <span>Bizi Arayın</span>
+                            </motion.a>
                         </div>
                     </motion.div>
                 )}
