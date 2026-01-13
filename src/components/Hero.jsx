@@ -2,7 +2,7 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
-    // Animasyon varyantları - kod tekrarını önlemek için
+    // Animasyon ayarları
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: (customDelay) => ({
@@ -14,53 +14,56 @@ export default function Hero() {
 
     return (
         <section id="hero" className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
-            {/* Arkaplan Resmi */}
+            {/* Arkaplan Görseli */}
             <div className="absolute inset-0 z-0">
                 <img
                     src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
                     alt="Modern Architecture"
-                    className="w-full h-full object-cover object-center scale-105" // Hafif zoom ile sinematik etki
+                    className="w-full h-full object-cover object-center scale-105" // Hafif zoom ile derinlik
                 />
-                {/* Modern Gradient Overlay: Yazıların okunurluğu için */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/30" />
+                {/* Gradient: Yazıların olduğu SOL taraf daha koyu, sağ taraf aydınlık */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
             </div>
 
-            {/* İçerik Konteyneri */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-12 flex items-center justify-center">
-                <div className="max-w-4xl text-center">
+            {/* İçerik Alanı - SOLA YASLI (Orijinal Yapı Korundu) */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+                <div className="max-w-3xl">
                     
+                    {/* Rozet (Badge) Kaldırıldı */}
+
                     {/* Ana Başlık */}
                     <motion.h1
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                         custom={0.1}
-                        className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-6 tracking-tight"
+                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-tight"
                     >
-                        Zorlu Projelerin <span className="text-primary-red relative inline-block">Çözüm Ortağı</span>
+                        Zorlu Projelerin <br />
+                        <span className="text-primary-red relative inline-block">Çözüm Ortağı</span>
                     </motion.h1>
 
-                    {/* Alt Metin */}
+                    {/* Alt Açıklama Metni */}
                     <motion.p
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                         custom={0.3}
-                        className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed max-w-2xl mx-auto font-light"
+                        className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl font-light"
                     >
-                        Kamu yapılarından nitelikli konut projelerine kadar; taahhüt ettiğimiz tarihte, 
+                        Kamu yapılarından nitelikli konut projelerine kadar; taahhüt ettiğimiz tarihte,
                         taahhüt ettiğimiz kalitede teslim ediyoruz. Risk yok, tecrübe var.
                     </motion.p>
 
-                    {/* Butonlar - Revize Edildi */}
+                    {/* Butonlar - Sola Hizalı */}
                     <motion.div
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                         custom={0.5}
-                        className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+                        className="flex flex-col sm:flex-row gap-5 justify-start items-start sm:items-center"
                     >
-                        {/* 1. Buton: Kırmızı Dolgulu (Primary) */}
+                        {/* 1. Buton: Kırmızı Dolgulu */}
                         <a
                             href="#projects"
                             className="group w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-primary-red text-white rounded-md font-bold text-base transition-all duration-300 hover:bg-red-700 shadow-lg shadow-red-900/20 hover:shadow-red-700/40 active:scale-[0.98]"
@@ -69,7 +72,7 @@ export default function Hero() {
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </a>
 
-                        {/* 2. Buton: Şeffaf Çerçeveli (Secondary - Outline) */}
+                        {/* 2. Buton: Şeffaf Çerçeveli */}
                         <a
                             href="#contact"
                             className="group w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-transparent text-white border-2 border-white/30 hover:border-white rounded-md font-bold text-base transition-all duration-300 hover:bg-white hover:text-primary-black active:scale-[0.98]"
@@ -80,7 +83,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* Scroll Göstergesi */}
+            {/* Scroll Göstergesi - En altta ortada sabit */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
