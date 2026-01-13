@@ -59,9 +59,7 @@ export default function Services() {
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
                         Profesyonel Çözümler
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto mt-4 text-base">
-                        Kamu ve özel sektör için kapsamlı inşaat hizmetleri sunuyoruz.
-                    </p>
+
                 </motion.div>
 
                 {/* Services Grid */}
@@ -75,7 +73,7 @@ export default function Services() {
                             viewport={{ once: true }}
                             className="group bg-neutral-900 rounded-2xl p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/20 transition-all duration-300"
                         >
-                            <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                                 <service.icon className="w-7 h-7 text-primary-red" />
                             </div>
                             <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-red transition-colors">{service.title}</h3>
