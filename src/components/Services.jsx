@@ -51,7 +51,7 @@ export default function Services() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="text-center mb-12"
+                    className="text-center mb-20"
                 >
                     <span className="inline-block text-primary-red font-bold uppercase tracking-widest text-xs bg-red-500/10 px-3 py-1.5 rounded-full mb-3">
                         Hizmetlerimiz
@@ -73,8 +73,10 @@ export default function Services() {
                             viewport={{ once: true }}
                             className="group bg-neutral-900 rounded-2xl p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/20 transition-all duration-300"
                         >
-                            <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                                <service.icon className="w-7 h-7 text-primary-red" />
+                            <div className="w-full flex justify-center mb-6">
+                                <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <service.icon className="w-7 h-7 text-primary-red" />
+                                </div>
                             </div>
                             <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-red transition-colors">{service.title}</h3>
                             <p className="text-gray-400 leading-relaxed text-sm">{service.description}</p>
