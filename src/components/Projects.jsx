@@ -43,7 +43,7 @@ export default function Projects() {
 
         {/* ================= FİLTRE ================= */}
         <div className="flex justify-center mb-16">
-          <div className="inline-flex flex-wrap justify-center gap-3 p-2 rounded-2xl bg-gray-100/80 backdrop-blur-sm">
+          <div className="inline-flex flex-wrap justify-center gap-6 p-4 rounded-3xl bg-gray-50 border border-gray-100">
             {years.map(year => {
               const active = selectedYear === year;
               return (
@@ -51,10 +51,10 @@ export default function Projects() {
                   key={year}
                   onClick={() => setSelectedYear(year)}
                   className={`
-                    px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300
+                    min-w-[80px] px-8 py-3.5 rounded-full text-base font-semibold transition-all duration-300
                     ${active
-                      ? 'bg-red-600 text-white shadow-lg shadow-red-600/30'
-                      : 'bg-white text-gray-600 hover:text-gray-900 hover:shadow-md'}
+                      ? 'bg-red-600 text-white shadow-xl shadow-red-600/40 scale-105'
+                      : 'bg-white text-gray-700 shadow-md hover:text-gray-900 hover:shadow-lg hover:scale-105'}
                   `}
                 >
                   {year}
