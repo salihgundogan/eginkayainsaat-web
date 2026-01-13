@@ -19,14 +19,15 @@ export default function Projects() {
         <section id="projects" className="bg-white section-padding relative">
             <div className="container-max">
 
-                {/* --- 1. BAŞLIK BÖLÜMÜ (TAM ORTADA) --- */}
-                {/* mx-auto ve text-center ile %100 ortalama garantisi */}
-                <div className="max-w-4xl mx-auto text-center mb-16">
+                {/* --- 1. BAŞLIK BÖLÜMÜ (GARANTİ ORTALANMIŞ) --- */}
+                {/* flex-col ve items-center ile her şeyi alt alta ve ortaya diziyoruz */}
+                <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
+                        className="w-full flex flex-col items-center" // İçeriği de ortalar
                     >
                         <span className="text-primary-red font-bold tracking-widest uppercase text-sm mb-3 block">
                             Referanslarımız
@@ -41,12 +42,13 @@ export default function Projects() {
                 </div>
 
                 {/* --- 2. BÜSBÜYÜK YIL MENÜSÜ (TAM ORTADA) --- */}
-                {/* mb-24 ile kartlarla arasına GENİŞ boşluk bırakıldı */}
+                {/* w-full ve justify-center ile butonu ekranın tam ortasına alıyoruz */}
                 <div className="flex justify-center w-full mb-24">
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
+                        // Buton grubu kapsayıcısı: Beyaz, gölgeli ve yuvarlak
                         className="bg-white p-2 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
                     >
                         <div className="flex gap-2 sm:gap-4 p-1">
@@ -54,8 +56,8 @@ export default function Projects() {
                                 <button
                                     key={year}
                                     onClick={() => setSelectedYear(year)}
-                                    // Butonlar büyük, dolgun ve yazı sığacak şekilde ayarlandı
-                                    className={`relative px-8 py-4 sm:px-12 sm:py-5 text-lg sm:text-2xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap outline-none min-w-[120px] ${
+                                    // Butonlar: İri, dolgun ve okunaklı
+                                    className={`relative px-8 py-4 sm:px-12 sm:py-5 text-lg sm:text-2xl font-boldSX rounded-full transition-all duration-300 z-10 whitespace-nowrap outline-none min-w-[120px] ${
                                         selectedYear === year 
                                             ? 'text-white' 
                                             : 'text-gray-400 hover:text-gray-900'
@@ -86,7 +88,7 @@ export default function Projects() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.4 }}
-                                className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 flex flex-col h-full transform hover:-translate-y-2"
+                                className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500HV flex flex-col h-full transform hover:-translate-y-2"
                             >
                                 {/* Görsel Alanı */}
                                 {SHOW_PROJECT_IMAGES && (
