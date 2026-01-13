@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Calendar, ArrowUpRight, Building2 } from 'lucide-react';
+import { MapPin, Calendar, ArrowUpRight } from 'lucide-react';
 import { projects } from '../data/projects';
 import { SHOW_PROJECT_IMAGES } from '../config/settings';
 
-// Yılları dinamik olarak alabilir veya statik tutabiliriz. 
-// "Tümü" seçeneğini en başa ekliyoruz.
+// Yılları dinamik olarak al
 const uniqueYears = [...new Set(projects.map(p => p.year))].sort((a, b) => b - a);
 const years = ['Tümü', ...uniqueYears];
 
@@ -20,54 +19,68 @@ export default function Projects() {
         <section id="projects" className="bg-white section-padding relative">
             <div className="container-max">
 
-                {/* Header Section */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-2xl"
+                {/* --- HEADER KISMI --- */}
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <motion.span 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-primary-red font-bold tracking-widest uppercase text-sm mb-3 block"
                     >
-                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm mb-2 block">
-                            Projelerimiz
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                            İmzamızı Attığımız İşler
-                        </h2>
-                        <p className="text-gray-600 text-lg leading-relaxed">
-                            Kamu kurumlarından özel konutlara kadar, her detayında kaliteyi hedeflediğimiz tamamlanan projelerimiz.
-                        </p>
-                    </motion.div>
+                        Referanslarımız
+                    </motion.span>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                    >
+                        İmzamızı Attığımız İşler
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-gray-600 text-lg leading-relaxed"
+                    >
+                        Kamu kurumlarından özel konutlara kadar, her detayında kaliteyi hedeflediğimiz tamamlanan projelerimiz.
+                    </motion.p>
+                </div>
 
-                    {/* Filter Tabs - Right Aligned on Desktop */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                {/* --- BÜSBÜYÜK YIL FİLTRESİ --- */}
+                <div className="flex justify-center mb-16">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-gray-100 p-1.5 rounded-xl inline-flex gap-2 self-start md:self-end flex-wrap"
+                        className="bg-white p-2 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 inline-flex overflow-x-auto max-w-full no-scrollbar"
                     >
-                        {years.map((year) => (
-                            <button
-                                key={year}
-                                onClick={() => setSelectedYear(year)}
-                                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 z-10 ${selectedYear === year ? 'text-gray-900' : 'text-gray-500 hover:text-gray-900'
+                        <div className="flex gap-2 sm:gap-3 p-1">
+                            {years.map((year) => (
+                                <button
+                                    key={year}
+                                    onClick={() => setSelectedYear(year)}
+                                    className={`relative px-8 py-4 sm:px-12 sm:py-5 text-lg sm:text-2xl font-bold rounded-full transition-all duration-300 z-10 whitespace-nowrap select-none outline-none ${
+                                        selectedYear === year 
+                                            ? 'text-white' 
+                                            : 'text-gray-400 hover:text-gray-900'
                                     }`}
-                            >
-                                {selectedYear === year && (
-                                    <motion.div
-                                        layoutId="activeTab"
-                                        className="absolute inset-0 bg-white shadow-sm border border-gray-200/50 rounded-lg -z-10"
-                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                    />
-                                )}
-                                {year}
-                            </button>
-                        ))}
+                                >
+                                    {selectedYear === year && (
+                                        <motion.div
+                                            layoutId="activeTab"
+                                            className="absolute inset-0 bg-primary-red rounded-full shadow-lg shadow-red-500/40 -z-10"
+                                            transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
+                                        />
+                                    )}
+                                    {year}
+                                </button>
+                            ))}
+                        </div>
                     </motion.div>
                 </div>
 
-                {/* Projects Grid */}
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {/* --- PROJELER GRID --- */}
+                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project) => (
                             <motion.div
@@ -77,51 +90,54 @@ export default function Projects() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
-                                className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 flex flex-col h-full"
+                                className="group bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 flex flex-col h-full transform hover:-translate-y-2"
                             >
-                                {/* Image Area */}
+                                {/* Görsel Alanı */}
                                 {SHOW_PROJECT_IMAGES && (
-                                    <div className="relative h-64 overflow-hidden bg-gray-100">
+                                    <div className="relative h-72 overflow-hidden bg-gray-100">
                                         <img
                                             src={project.image}
                                             alt={project.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
+                                        
+                                        {/* Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
-                                        {/* Overlay on Hover */}
-                                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                            <div className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-2 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                                <span>İncele</span>
-                                                <ArrowUpRight className="w-4 h-4" />
+                                        {/* Kategori Etiketi (Sol Üst) */}
+                                        <div className="absolute top-6 left-6">
+                                            <span className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-md ${
+                                                project.category === 'Kamu' 
+                                                ? 'bg-blue-600/90 text-white' 
+                                                : 'bg-emerald-600/90 text-white'
+                                            }`}>
+                                                {project.category}
+                                            </span>
+                                        </div>
+
+                                        {/* Buton (Orta) */}
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                                            <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
+                                                <span>Projeyi İncele</span>
+                                                <ArrowUpRight className="w-5 h-5" />
                                             </div>
                                         </div>
                                     </div>
                                 )}
 
-                                {/* Content Area */}
-                                <div className="p-5 sm:p-6 lg:p-8 flex flex-col flex-grow">
-                                    {/* Tags: Category & Year */}
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <span className={`text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide ${project.category === 'Kamu'
-                                            ? 'bg-blue-50 text-blue-700 border border-blue-100'
-                                            : 'bg-emerald-50 text-emerald-700 border border-emerald-100'
-                                            }`}>
-                                            {project.category}
-                                        </span>
-                                        <span className="flex items-center gap-1 text-xs font-medium text-gray-500 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100">
-                                            <Calendar className="w-3 h-3" />
-                                            {project.year}
-                                        </span>
+                                {/* İçerik Alanı */}
+                                <div className="p-8 flex flex-col flex-grow">
+                                    <div className="flex items-center gap-2 mb-4 text-sm font-semibold text-gray-400">
+                                        <Calendar className="w-4 h-4 text-primary-red" />
+                                        <span>{project.year}</span>
                                     </div>
 
-                                    {/* Title */}
-                                    <h3 className="text-lg font-bold text-gray-900 mb-3 leading-snug group-hover:text-primary-red transition-colors">
+                                    <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight group-hover:text-primary-red transition-colors">
                                         {project.title}
                                     </h3>
 
-                                    {/* Location (Pushed to bottom) */}
-                                    <div className="mt-auto pt-4 border-t border-gray-50 flex items-center text-gray-500 text-sm">
-                                        <MapPin className="w-4 h-4 mr-1.5 text-gray-400" />
+                                    <div className="mt-auto pt-6 border-t border-gray-100 flex items-center text-gray-500 font-medium">
+                                        <MapPin className="w-5 h-5 mr-2 text-gray-400" />
                                         {project.location}
                                     </div>
                                 </div>
@@ -130,10 +146,13 @@ export default function Projects() {
                     </AnimatePresence>
                 </motion.div>
 
-                {/* Empty State Warning */}
+                {/* Boş Durum Uyarısı */}
                 {filteredProjects.length === 0 && (
-                    <div className="text-center py-20 text-gray-500">
-                        Bu kategoride henüz proje bulunmuyor.
+                    <div className="text-center py-24">
+                        <div className="bg-gray-50 inline-block p-6 rounded-full mb-4">
+                            <Calendar className="w-12 h-12 text-gray-300" />
+                        </div>
+                        <p className="text-gray-500 text-lg">Bu yılda tamamlanan proje bulunmuyor.</p>
                     </div>
                 )}
             </div>
