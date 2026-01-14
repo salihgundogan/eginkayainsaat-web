@@ -1,96 +1,43 @@
-import { Phone, Mail, MapPin } from 'lucide-react';
-import { SITE_CONFIG } from '../config/settings';
-
-const quickLinks = [
-    { name: 'Ana Sayfa', href: '#hero' },
-    { name: 'Hakkımızda', href: '#about' },
-    { name: 'Hizmetler', href: '#services' },
-    { name: 'Projeler', href: '#projects' },
-    { name: 'İletişim', href: '#contact' },
-];
+import { motion } from 'framer-motion';
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
-
-    const handleLinkClick = (e, href) => {
-        e.preventDefault();
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
-        <footer className="bg-primary-black text-white">
-            <div className="container-max section-padding py-12">
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-                    {/* Logo & Description */}
-                    <div className="lg:col-span-2">
-                        <a
-                            href="#hero"
-                            onClick={(e) => handleLinkClick(e, '#hero')}
-                            className="inline-block mb-5"
-                        >
-                            <img
-                                src="/logo-white.svg"
-                                alt="Eğinkaya İnşaat Logo"
-                                className="h-14 lg:h-16 w-auto"
-                            />
-                        </a>
-                        <p className="text-gray-400 leading-relaxed max-w-md text-sm">
-                            Kamu ve özel sektör projelerinde güvenilir, kaliteli ve zamanında
-                            teslim anlayışıyla hizmet veriyoruz. Niğde, Kayseri ve Sivas
-                            bölgelerinde projeleriniz için yanınızdayız.
-                        </p>
-                    </div>
+        <footer 
+            className="relative bg-[#0F0F0F] text-white overflow-hidden"
+            // [GARANTİ BOŞLUK]: Üstten ve alttan 100px boşluk.
+            style={{ paddingTop: '100px', paddingBottom: '100px' }}
+        >
+            
+            {/* Arka Plan Efekti (Hafif Kırmızı Işık) */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-red-600/5 rounded-full blur-[120px] pointer-events-none" />
 
-                    {/* Quick Links */}
-                    <div>
-                        <h4 className="text-base font-bold mb-5">Hızlı Linkler</h4>
-                        <ul className="space-y-2.5">
-                            {quickLinks.map((link) => (
-                                <li key={link.name}>
-                                    <a
-                                        href={link.href}
-                                        onClick={(e) => handleLinkClick(e, link.href)}
-                                        className="text-gray-400 hover:text-primary-red transition-colors text-sm"
-                                    >
-                                        {link.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+            {/* İçerik Konteyneri */}
+            <div 
+                className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center"
+                // [GARANTİ BOŞLUK]: Elemanlar (Başlık, Yazı, Copyright) arası 30px boşluk
+                style={{ gap: '30px' }}
+            >
+                
+                {/* 1. MARKA BAŞLIĞI */}
+                <h2 className="text-3xl md:text-4xl font-black tracking-[0.2em] uppercase">
+                    EĞİNKAYA <span className="text-red-600">İNŞAAT</span>
+                </h2>
 
-                    {/* Contact Info */}
-                    <div>
-                        <h4 className="text-base font-bold mb-5">İletişim</h4>
-                        <ul className="space-y-3">
-                            <li className="flex items-start gap-3">
-                                <Phone className="w-4 h-4 text-primary-red shrink-0 mt-0.5" />
-                                <span className="text-gray-400 text-sm">{SITE_CONFIG.phone}</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <Mail className="w-4 h-4 text-primary-red shrink-0 mt-0.5" />
-                                <span className="text-gray-400 text-sm">{SITE_CONFIG.email}</span>
-                            </li>
-                            <li className="flex items-start gap-3">
-                                <MapPin className="w-4 h-4 text-primary-red shrink-0 mt-0.5" />
-                                <span className="text-gray-400 text-sm">{SITE_CONFIG.address}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+                {/* 2. AÇIKLAMA METNİ */}
+                {/* max-w-3xl: Metin çok yayılmasın, blok halinde okunsun */}
+                <p className="text-gray-400 text-lg leading-relaxed max-w-3xl">
+                    Kamu ve özel sektör projelerinde güvenilir, kaliteli ve zamanında teslim anlayışıyla hizmet veriyoruz. 
+                    Niğde, Kayseri ve Sivas bölgelerinde projeleriniz için yanınızdayız.
+                </p>
 
-            {/* Bottom Bar */}
-            <div className="border-t border-white/10">
-                <div className="container-max section-padding py-5">
-                    <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-gray-400">
-                        <p>© {currentYear} Eğinkaya İnşaat. Tüm hakları saklıdır.</p>
-                        <p>Profesyonel İnşaat Çözümleri</p>
-                    </div>
-                </div>
+                {/* İnce Ayırıcı Çizgi (Estetik Durması İçin) */}
+                <div className="w-full max-w-xs h-px bg-white/10" />
+
+                {/* 3. COPYRIGHT */}
+                <p className="text-gray-600 text-sm font-medium tracking-wide">
+                    © 2026 Eğinkaya İnşaat. Tüm hakları saklıdır.
+                </p>
+
             </div>
         </footer>
     );

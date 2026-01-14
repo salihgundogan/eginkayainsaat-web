@@ -98,7 +98,7 @@ export default function Services() {
                         <span className="w-8 h-[2px] bg-red-500"></span>
                         Hizmetlerimiz
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] whitespace-nowrap">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:whitespace-nowrap">
     Mükemmeliyet İnşa Ediyoruz
 </h2>
                     <p className="text-gray-400 text-lg mt-2 leading-relaxed md:whitespace-nowrap">

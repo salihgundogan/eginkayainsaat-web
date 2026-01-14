@@ -1,191 +1,180 @@
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from 'lucide-react';
-import { SITE_CONFIG } from '../config/settings';
-
-const contactInfo = [
-    {
-        icon: Phone,
-        label: 'Bizi Arayın',
-        value: SITE_CONFIG.phone,
-        href: `tel:${SITE_CONFIG.phone.replace(/\s/g, '')}`,
-        action: 'Hemen Ara'
-    },
-    {
-        icon: Mail,
-        label: 'E-posta Gönderin',
-        value: SITE_CONFIG.email,
-        href: `mailto:${SITE_CONFIG.email}`,
-        action: 'Mail Gönder'
-    },
-    {
-        icon: MapPin,
-        label: 'Merkez Ofis',
-        value: SITE_CONFIG.address,
-        href: 'https://maps.google.com',
-        action: 'Yol Tarifi Al'
-    },
-    {
-        icon: Clock,
-        label: 'Çalışma Saatleri',
-        value: 'Pzt - Cmt: 08:30 - 18:00',
-        href: '#',
-        action: 'Şu an Açık'
-    },
-];
+import { Phone, Mail, MapPin, Send } from 'lucide-react';
 
 export default function Contact() {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert('Mesajınız başarıyla alındı! Ekibimiz en kısa sürede size dönüş yapacaktır.');
-    };
-
     return (
-        <section id="contact" className="bg-gray-50 section-padding relative overflow-hidden">
+        <section 
+            id="contact" 
+            className="relative bg-white overflow-hidden"
+            // Dikey Boşluklar (160px)
+            style={{ paddingTop: '160px', paddingBottom: '160px' }}
+        >
+            {/* Arka Plan Dekorasyonu */}
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-red-50 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[600px] h-[600px] bg-gray-50 rounded-full blur-[100px] pointer-events-none" />
 
-            {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-100/50 skew-x-12 translate-x-20 z-0" />
+            {/* Yan Boşluklar (%5) */}
+            <div className="container-max relative z-10" style={{ paddingLeft: '5%', paddingRight: '5%' }}>
+                
+                <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
-            <div className="container-max relative z-10 pt-16">
+                    {/* --- SOL KOLON (Bilgiler) --- */}
+                    <div className="lg:col-span-2 flex flex-col" style={{ gap: '40px' }}>
+                        <div className="flex flex-col" style={{ gap: '20px' }}>
+                            <span className="text-red-600 font-bold tracking-[0.2em] uppercase text-sm flex items-center gap-3">
+                                <span className="w-8 h-[2px] bg-red-600" />
+                                İletişim
+                            </span>
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-[1.1]">
+                                Projenizi <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
+                                    Birlikte Planlayalım.
+                                </span>
+                            </h2>
+                            <p className="text-gray-500 text-lg leading-relaxed">
+                                Sorularınız, teklif talepleriniz veya danışmanlık için bize ulaşın. Ekibimiz en kısa sürede dönüş yapacaktır.
+                            </p>
+                        </div>
 
-                {/* ===== HEADER SECTION ===== */}
-                <div className="w-full flex justify-center">
-                    <motion.div
-                        className="text-center max-w-2xl"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm">
-                            İletişim
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
-                            Profesyonel Çözüm İsteyenlere
-                        </h2>
-                        <p className="text-gray-600">
-                            Projenizin detaylarını uzman ekibimizle değerlendirin, en doğru yol haritasını çizelim.
-                        </p>
-                    </motion.div>
-                </div>
-
-                {/* ===== SPACER: Header ile Content arası ===== */}
-                <div className="h-20" />
-
-                {/* ===== MAIN CONTENT: Sol Kartlar + Sağ Form ===== */}
-                <div className="grid lg:grid-cols-5 gap-12 lg:gap-24 items-start">
-
-                    {/* LEFT: Contact Info Cards */}
-                    <motion.div
-                        className="lg:col-span-2 flex flex-col gap-8"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        {contactInfo.map((info, index) => (
-                            <a
-                                key={index}
-                                href={info.href}
-                                target={info.icon === MapPin ? "_blank" : "_self"}
-                                rel="noreferrer"
-                                // PADDING ARTTIRILDI: p-6 -> p-8 lg:p-10
-                                className="group flex items-start gap-6 lg:gap-8 p-8 lg:p-10 bg-white rounded-[2rem] shadow-sm hover:shadow-lg border border-gray-100 transition-all duration-300 hover:-translate-y-1"
-                            >
-                                <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary-red transition-colors duration-300">
-                                    <info.icon className="w-8 h-8 text-primary-red group-hover:text-white transition-colors duration-300" />
+                        <div className="flex flex-col" style={{ gap: '25px' }}>
+                            {/* Adres */}
+                            <div className="flex items-start gap-5 p-6 rounded-3xl bg-gray-50 border border-gray-100 hover:border-red-200 transition-colors duration-300 group shadow-sm hover:shadow-md">
+                                <div className="shrink-0 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-red-600 shadow-sm border border-gray-100 group-hover:scale-110 transition-transform duration-300">
+                                    <MapPin className="w-6 h-6" />
                                 </div>
-                                <div className="flex-1">
-                                    <h4 className="font-bold text-gray-900 text-xl mb-2">{info.label}</h4>
-                                    <p className="text-gray-600 text-base mb-3">{info.value}</p>
-                                    <div className="flex items-center gap-2 text-sm font-semibold text-primary-red opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                                        {info.action} <ArrowRight className="w-4 h-4" />
+                                <div>
+                                    <h4 className="text-gray-900 font-bold mb-1 text-lg">Merkez Ofis</h4>
+                                    <p className="text-gray-500 text-base leading-relaxed">
+                                        Maslak Mah. Büyükdere Cad.<br /> No: 123, Sarıyer / İstanbul
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Telefon & Mail */}
+                            <div className="flex flex-col gap-4">
+                                <a href="tel:+902121234567" className="flex items-center gap-5 p-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300">
+                                    <div className="shrink-0 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-red-600 shadow-sm border border-gray-100 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
+                                        <Phone className="w-6 h-6" />
+                                    </div>
+                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">+90 (212) 123 45 67</span>
+                                </a>
+
+                                <a href="mailto:info@eginkaya.com" className="flex items-center gap-5 p-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300">
+                                    <div className="shrink-0 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-red-600 shadow-sm border border-gray-100 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
+                                        <Mail className="w-6 h-6" />
+                                    </div>
+                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">info@eginkaya.com</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* --- SAĞ KOLON (Form) --- */}
+                    <div 
+                        className="lg:col-span-3 bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/70 border border-gray-100"
+                        // [OPTIMIZASYON]: Kart iç boşluğu 60px -> 45px yapıldı.
+                        style={{ padding: '45px' }}
+                    >
+                        {/* Gap düşürüldü: gap-8 -> gap-5 */}
+                        <form className="flex flex-col gap-5">
+                            
+                            <h3 className="text-2xl font-bold text-gray-900 mb-1">Bize Yazın</h3>
+
+                            {/* İsim & Soyisim */}
+                            <div className="grid md:grid-cols-2 gap-5">
+                                <div className="flex flex-col gap-2">
+                                    <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Adınız</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Adınız" 
+                                        // [OPTIMIZASYON]: Padding 25px -> 18px (Hala kalın ama devasa değil)
+                                        style={{ padding: '18px 24px' }}
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Soyadınız</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Soyadınız" 
+                                        style={{ padding: '18px 24px' }}
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                    />
+                                </div>
+                            </div>
+
+                            {/* E-posta & Telefon */}
+                            <div className="grid md:grid-cols-2 gap-5">
+                                <div className="flex flex-col gap-2">
+                                    <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">E-posta</label>
+                                    <input 
+                                        type="email" 
+                                        placeholder="ornek@sirket.com" 
+                                        style={{ padding: '18px 24px' }}
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Telefon</label>
+                                    <input 
+                                        type="tel" 
+                                        placeholder="05XX XXX XX XX" 
+                                        style={{ padding: '18px 24px' }}
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Konu */}
+                            <div className="grid md:grid-cols-2 gap-5">
+                                <div className="flex flex-col gap-2">
+                                    <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Konu</label>
+                                    <div className="relative">
+                                        <select 
+                                            style={{ padding: '18px 24px' }}
+                                            className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all cursor-pointer appearance-none"
+                                        >
+                                            <option>Genel Bilgi Talebi</option>
+                                            <option>Proje Teklifi</option>
+                                            <option>Kentsel Dönüşüm</option>
+                                            <option>Diğer</option>
+                                        </select>
+                                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                        </div>
                                     </div>
                                 </div>
-                            </a>
-                        ))}
-                    </motion.div>
-
-                    {/* RIGHT: Contact Form */}
-                    <motion.div
-                        className="lg:col-span-3"
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <form
-                            onSubmit={handleSubmit}
-                            // FORM PADDING ARTTIRILDI: p-8 md:p-12 -> p-10 lg:p-16
-                            className="bg-white rounded-[2.5rem] p-10 md:p-12 lg:p-16 shadow-xl shadow-gray-200/50 border border-gray-100"
-                        >
-                            <h3 className="text-3xl font-bold text-gray-900 mb-12">
-                                Hızlı Teklif Formu
-                            </h3>
-
-                            {/* Row 1: Ad + Telefon */}
-                            <div className="grid sm:grid-cols-2 gap-8 mb-8">
-                                <div className="space-y-3">
-                                    <label className="text-sm font-semibold text-gray-700 ml-1">Adınız Soyadınız</label>
-                                    <input
-                                        type="text"
-                                        required
-                                        className="w-full px-6 py-5 rounded-2xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300"
-                                        placeholder="Adınız Soyadınız"
-                                    />
-                                </div>
-                                <div className="space-y-3">
-                                    <label className="text-sm font-semibold text-gray-700 ml-1">Telefon Numaranız</label>
-                                    <input
-                                        type="tel"
-                                        required
-                                        className="w-full px-6 py-5 rounded-2xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300"
-                                        placeholder="0(5XX) XXX XX XX"
-                                    />
-                                </div>
+                                <div className="hidden md:block"></div>
                             </div>
 
-                            {/* Row 2: Email + Konu */}
-                            <div className="grid sm:grid-cols-2 gap-6 mb-8">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-gray-700">E-posta Adresiniz</label>
-                                    <input
-                                        type="email"
-                                        required
-                                        className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300"
-                                        placeholder="ornek@sirket.com"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-gray-700">Konu</label>
-                                    <select
-                                        className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300 appearance-none"
-                                    >
-                                        <option>Genel Bilgi</option>
-                                        <option>Proje Teklifi</option>
-                                        <option>İş Başvurusu</option>
-                                        <option>Diğer</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            {/* Row 3: Mesaj */}
-                            <div className="space-y-2 mb-10">
-                                <label className="text-sm font-semibold text-gray-700">Mesajınız</label>
-                                <textarea
-                                    required
-                                    rows={5}
-                                    className="w-full px-4 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:border-primary-red focus:ring-4 focus:ring-red-500/10 outline-none transition-all duration-300 resize-none"
+                            {/* Mesaj */}
+                            <div className="flex flex-col gap-2">
+                                <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Mesajınız</label>
+                                <textarea 
+                                    rows="3" 
                                     placeholder="Projenizden kısaca bahsedin..."
-                                />
+                                    style={{ padding: '18px 24px' }}
+                                    className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium resize-none"
+                                ></textarea>
                             </div>
 
-                            {/* Submit Button */}
-                            <button
-                                type="submit"
-                                className="w-full sm:w-auto px-10 py-4 bg-primary-red text-white font-bold rounded-xl hover:bg-red-700 hover:shadow-lg hover:shadow-red-500/30 transform active:scale-95 transition-all duration-300 flex items-center justify-center gap-3"
-                            >
-                                <Send className="w-5 h-5" />
-                                Teklifi Gönder
-                            </button>
+                            {/* BUTON */}
+                            <div className="flex justify-start pt-4">
+                                <button 
+                                    type="button" 
+                                    // [OPTIMIZASYON]: Buton da hafifçe küçültüldü ama hala "kalın" (20px 45px)
+                                    style={{ padding: '20px 45px' }}
+                                    className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-800 text-white font-bold text-lg shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 w-auto"
+                                >
+                                    <span className="relative z-10">Mesajı Gönder</span>
+                                    <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+                                </button>
+                            </div>
+
                         </form>
-                    </motion.div>
+                    </div>
+
                 </div>
             </div>
         </section>

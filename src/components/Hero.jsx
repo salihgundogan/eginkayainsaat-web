@@ -66,7 +66,9 @@ export default function Hero() {
                         {/* 1. Buton: TEKLİF ALIN (Ana Odak) */}
                         <a
                             href="#contact"
-                            className="group relative w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 px-12 py-6 bg-gradient-to-br from-red-600 via-red-600 to-red-700 text-white rounded-2xl shadow-[0_20px_50px_rgba(220,38,38,0.5)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.7)] hover:-translate-y-2 transition-all duration-300 ring-4 ring-red-500/30"
+                            // [GARANTİ ÇÖZÜM]: Buton iç boşluğu (Padding) manuel verildi.
+                            style={{ padding: '15px 30px' }}
+                            className="group relative w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 bg-gradient-to-br from-red-600 via-red-600 to-red-700 text-white rounded-2xl shadow-[0_20px_50px_rgba(220,38,38,0.5)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.7)] hover:-translate-y-2 transition-all duration-300 ring-4 ring-red-500/30"
                         >
                             <div className="flex flex-col items-start">
                                 <span className="text-2xl font-black uppercase tracking-wide">Teklif Alın</span>
@@ -77,10 +79,12 @@ export default function Hero() {
                             </div>
                         </a>
 
-                        {/* 2. Buton: REFERANSLARIMIZ (Beyaz Dolgulu - Çok Net) */}
+                        {/* 2. Buton: REFERANSLARIMIZ (Beyaz Dolgulu) */}
                         <a
                             href="#projects"
-                            className="group w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 px-12 py-6 bg-white text-gray-900 rounded-2xl shadow-2xl hover:bg-gray-100 hover:-translate-y-2 transition-all duration-300"
+                            // [GARANTİ ÇÖZÜM]: Buton iç boşluğu (Padding) manuel verildi.
+                            style={{ padding: '15px 30px' }}
+                            className="group w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 bg-white text-gray-900 rounded-2xl shadow-2xl hover:bg-gray-100 hover:-translate-y-2 transition-all duration-300"
                         >
                             <div className="bg-gray-100 p-2 rounded-full group-hover:bg-gray-200 transition-colors">
                                 <CheckCircle2 className="w-8 h-8 text-gray-900" />

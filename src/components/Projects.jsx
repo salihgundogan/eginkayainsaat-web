@@ -85,7 +85,8 @@ export default function Projects() {
                             <span className="w-8 h-[2px] bg-red-600" />
                         </span>
                         {/* [DEĞİŞTİ]: Yazı rengi koyu (text-gray-900) */}
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight whitespace-nowrap">
+                       
+<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:whitespace-nowrap">
     İmza Attığımız Prestijli Yapılar
 </h2>
                     </div>
