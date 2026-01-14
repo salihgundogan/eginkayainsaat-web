@@ -7,7 +7,7 @@ export default function Contact() {
             id="contact" 
             className="relative bg-white overflow-hidden"
             // Dikey Boşluklar (160px)
-            style={{ paddingTop: '160px', paddingBottom: '160px' }}
+            style={{ paddingTop: '50px', paddingBottom: '160px' }}
         >
             {/* Arka Plan Dekorasyonu */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-red-50 rounded-full blur-[120px] pointer-events-none" />
@@ -37,33 +37,47 @@ export default function Contact() {
                         </div>
 
                         <div className="flex flex-col" style={{ gap: '25px' }}>
-                            {/* Adres */}
-                            <div className="flex items-start gap-5 p-6 rounded-3xl bg-gray-50 border border-gray-100 hover:border-red-200 transition-colors duration-300 group shadow-sm hover:shadow-md">
+                            {/* Adres Kutusu - GÜNCELLENDİ */}
+                            <div 
+                                // p-6 kaldırıldı, style ile padding eklendi
+                                className="flex items-start gap-5 rounded-3xl bg-gray-50 border border-gray-100 hover:border-red-200 transition-colors duration-300 group shadow-sm hover:shadow-md"
+                                style={{ padding: '20px' }}
+                            >
                                 <div className="shrink-0 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-red-600 shadow-sm border border-gray-100 group-hover:scale-110 transition-transform duration-300">
                                     <MapPin className="w-6 h-6" />
                                 </div>
                                 <div>
                                     <h4 className="text-gray-900 font-bold mb-1 text-lg">Merkez Ofis</h4>
                                     <p className="text-gray-500 text-base leading-relaxed">
-                                        Maslak Mah. Büyükdere Cad.<br /> No: 123, Sarıyer / İstanbul
+                                        Germir Mah. 425. Sok. Karayer Apt. No: 40/A, <br /> Melikgazi/KAYSERİ
                                     </p>
                                 </div>
                             </div>
 
-                            {/* Telefon & Mail */}
+                            {/* Telefon & Mail Kutuları - GÜNCELLENDİ */}
                             <div className="flex flex-col gap-4">
-                                <a href="tel:+902121234567" className="flex items-center gap-5 p-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300">
+                                <a 
+                                    href="tel:+90 533 020 94 42" 
+                                    // p-5 kaldırıldı, style ile padding eklendi
+                                    className="flex items-center gap-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300"
+                                    style={{ padding: '15px' }}
+                                >
                                     <div className="shrink-0 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-red-600 shadow-sm border border-gray-100 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
                                         <Phone className="w-6 h-6" />
                                     </div>
-                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">+90 (212) 123 45 67</span>
+                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">+90 (533) 020 94 42</span>
                                 </a>
 
-                                <a href="mailto:info@eginkaya.com" className="flex items-center gap-5 p-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300">
+                                <a 
+                                    href="mailto:ibrahim@eginkayainsaat.com" 
+                                    // p-5 kaldırıldı, style ile padding eklendi
+                                    className="flex items-center gap-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300"
+                                    style={{ padding: '15px' }}
+                                >
                                     <div className="shrink-0 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-red-600 shadow-sm border border-gray-100 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
                                         <Mail className="w-6 h-6" />
                                     </div>
-                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">info@eginkaya.com</span>
+                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">ibrahim@eginkayainsaat.com</span>
                                 </a>
                             </div>
                         </div>
@@ -72,10 +86,8 @@ export default function Contact() {
                     {/* --- SAĞ KOLON (Form) --- */}
                     <div 
                         className="lg:col-span-3 bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/70 border border-gray-100"
-                        // [OPTIMIZASYON]: Kart iç boşluğu 60px -> 45px yapıldı.
                         style={{ padding: '45px' }}
                     >
-                        {/* Gap düşürüldü: gap-8 -> gap-5 */}
                         <form className="flex flex-col gap-5">
                             
                             <h3 className="text-2xl font-bold text-gray-900 mb-1">Bize Yazın</h3>
@@ -87,7 +99,6 @@ export default function Contact() {
                                     <input 
                                         type="text" 
                                         placeholder="Adınız" 
-                                        // [OPTIMIZASYON]: Padding 25px -> 18px (Hala kalın ama devasa değil)
                                         style={{ padding: '18px 24px' }}
                                         className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
                                     />
@@ -162,7 +173,6 @@ export default function Contact() {
                             <div className="flex justify-start pt-4">
                                 <button 
                                     type="button" 
-                                    // [OPTIMIZASYON]: Buton da hafifçe küçültüldü ama hala "kalın" (20px 45px)
                                     style={{ padding: '20px 45px' }}
                                     className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-800 text-white font-bold text-lg shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 w-auto"
                                 >

@@ -20,7 +20,7 @@ export default function About() {
             id="about" 
             className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-red-50/30"
             // MANUEL ZORUNLU BOŞLUK (Padding) - CSS Class sorunu varsa bunu kesin uygular
-            style={{ paddingTop: '140px', paddingBottom: '140px' }}
+            style={{ paddingTop: '50px', paddingBottom: '140px' }}
         >
             
             {/* Arka Plan Süslemeleri */}

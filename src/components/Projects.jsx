@@ -56,7 +56,7 @@ export default function Projects() {
         <section 
             id="projects" 
             className="relative bg-gray-50 overflow-hidden" // [DEĞİŞTİ]: Arka plan Light (bg-gray-50)
-            style={{ paddingTop: '80px', paddingBottom: '80px' }}
+            style={{ paddingTop: '20px', paddingBottom: '80px' }}
         >
             
             <style jsx>{`

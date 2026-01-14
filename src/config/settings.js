@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
     title: 'Eğinkaya İnşaat | Profesyonel İnşaat Çözümleri',
     description: 'Eğinkaya İnşaat olarak, kamu ve özel sektör projelerinde güvenilir, kaliteli ve zamanında teslim anlayışıyla hizmet veriyoruz. Niğde, Kayseri, Sivas bölgelerinde uzman ekibimizle yanınızdayız.',
     keywords: 'inşaat, müteahhit, yapım, tadilat, onarım, villa, Niğde, Kayseri, Sivas, Eğinkaya',
-    phone: '+90 (XXX) XXX XX XX',
-    email: 'info@eginkayainsaat.com',
+    phone: '+90 533 020 94 42',
+    email: 'ibrahim@eginkayainsaat.com',
     address: 'Türkiye',
 };

@@ -75,7 +75,7 @@ export default function Services() {
             id="services" 
             className="relative bg-[#0F0F0F] overflow-hidden text-white"
             // [KURAL]: Boşluklar elle veriliyor
-            style={{ paddingTop: '120px', paddingBottom: '120px' }}
+            style={{ paddingTop: '50px', paddingBottom: '70px' }}
         >
             
             <style jsx>{`

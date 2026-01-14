@@ -21,7 +21,7 @@ export default function Hero() {
                     alt="Modern Architecture"
                     className="w-full h-full object-cover object-center scale-105"
                 />
-                {/* Gradient: Okunabilirlik için koyu katman */}
+                {/* Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
             </div>
 
@@ -43,19 +43,23 @@ export default function Hero() {
                         </span>
                     </motion.h1>
 
-                    {/* Alt Açıklama */}
+                    {/* Alt Açıklama (Margin normale döndü, aşağıdaki boş kutu itecek) */}
                     <motion.p
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                         custom={0.3}
-                        className="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto font-medium drop-shadow-md"
+                        className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed max-w-3xl mx-auto font-medium drop-shadow-md"
                     >
                         Kamu yapılarından nitelikli konut projelerine kadar; taahhüt ettiğimiz tarihte,
                         taahhüt ettiğimiz kalitede.
                     </motion.p>
 
-                    {/* DEVASA BUTONLAR ALANI */}
+                    {/* KESİN ÇÖZÜM: Zorla boşluk bırakan görünmez kutu (Spacer) */}
+                    {/* h-32 = 128px (Mobil), lg:h-48 = 192px (Masaüstü) boşluk */}
+                    <div className="w-full h-20 lg:h-18"></div>
+
+                    {/* Butonlar */}
                     <motion.div
                         variants={fadeUpVariants}
                         initial="hidden"
@@ -63,10 +67,8 @@ export default function Hero() {
                         custom={0.5}
                         className="flex flex-col md:flex-row gap-6 justify-center items-center w-full"
                     >
-                        {/* 1. Buton: TEKLİF ALIN (Ana Odak) */}
                         <a
                             href="#contact"
-                            // [GARANTİ ÇÖZÜM]: Buton iç boşluğu (Padding) manuel verildi.
                             style={{ padding: '15px 30px' }}
                             className="group relative w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 bg-gradient-to-br from-red-600 via-red-600 to-red-700 text-white rounded-2xl shadow-[0_20px_50px_rgba(220,38,38,0.5)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.7)] hover:-translate-y-2 transition-all duration-300 ring-4 ring-red-500/30"
                         >
@@ -79,10 +81,8 @@ export default function Hero() {
                             </div>
                         </a>
 
-                        {/* 2. Buton: REFERANSLARIMIZ (Beyaz Dolgulu) */}
                         <a
                             href="#projects"
-                            // [GARANTİ ÇÖZÜM]: Buton iç boşluğu (Padding) manuel verildi.
                             style={{ padding: '15px 30px' }}
                             className="group w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 bg-white text-gray-900 rounded-2xl shadow-2xl hover:bg-gray-100 hover:-translate-y-2 transition-all duration-300"
                         >
