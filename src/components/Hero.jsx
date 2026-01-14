@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, Send, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
@@ -13,21 +13,21 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <section id="hero" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
             {/* Arkaplan Görseli */}
             <div className="absolute inset-0 z-0">
                 <img
                     src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
                     alt="Modern Architecture"
-                    className="w-full h-full object-cover object-center scale-105" // Hafif zoom ile derinlik
+                    className="w-full h-full object-cover object-center scale-105"
                 />
-                {/* Gradient: Merkeze odaklayan modern bir karartma */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
+                {/* Gradient: Okunabilirlik için koyu katman */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
             </div>
 
-            {/* İçerik Alanı - MERKEZLİ (CENTERED) */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center text-center">
-                <div className="max-w-4xl">
+            {/* İçerik Alanı */}
+            <div className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 w-full flex flex-col items-center text-center">
+                <div className="max-w-5xl">
 
                     {/* Ana Başlık */}
                     <motion.h1
@@ -35,66 +35,78 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         custom={0.1}
-                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-tight"
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] mb-8 tracking-tight drop-shadow-2xl"
                     >
                         Zorlu Projelerin <br className="hidden sm:block" />
-                        <span className="text-primary-red relative inline-block">Çözüm Ortağı</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600 relative inline-block">
+                            Çözüm Ortağı
+                        </span>
                     </motion.h1>
 
-                    {/* Alt Açıklama Metni */}
+                    {/* Alt Açıklama */}
                     <motion.p
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                         custom={0.3}
-                        className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto font-light"
+                        className="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed max-w-3xl mx-auto font-medium drop-shadow-md"
                     >
                         Kamu yapılarından nitelikli konut projelerine kadar; taahhüt ettiğimiz tarihte,
-                        taahhüt ettiğimiz kalitede teslim ediyoruz. Risk yok, tecrübe var.
+                        taahhüt ettiğimiz kalitede.
                     </motion.p>
 
-                    {/* Butonlar - Ortaya Hizalı */}
+                    {/* DEVASA BUTONLAR ALANI */}
                     <motion.div
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
                         custom={0.5}
-                        className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+                        className="flex flex-col md:flex-row gap-6 justify-center items-center w-full"
                     >
-                        {/* 1. Buton: Kırmızı Dolgulu */}
-                        <a
-                            href="#projects"
-                            className="group w-full sm:w-auto flex items-center justify-center gap-4 px-10 py-5 bg-primary-red text-white rounded-xl font-bold text-lg transition-all duration-300 hover:bg-red-700 shadow-xl shadow-red-900/20 hover:shadow-red-700/40 active:scale-[0.98]"
-                        >
-                            Referanslarımız
-                            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                        </a>
-
-                        {/* 2. Buton: Şeffaf Çerçeveli */}
+                        {/* 1. Buton: TEKLİF ALIN (Ana Odak) */}
                         <a
                             href="#contact"
-                            className="group w-full sm:w-auto flex items-center justify-center px-10 py-5 bg-white/5 backdrop-blur-sm text-white border-2 border-white/20 hover:border-white rounded-xl font-bold text-lg transition-all duration-300 hover:bg-white hover:text-primary-black active:scale-[0.98]"
+                            className="group relative w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 px-12 py-6 bg-gradient-to-br from-red-600 via-red-600 to-red-700 text-white rounded-2xl shadow-[0_20px_50px_rgba(220,38,38,0.5)] hover:shadow-[0_20px_50px_rgba(220,38,38,0.7)] hover:-translate-y-2 transition-all duration-300 ring-4 ring-red-500/30"
                         >
-                            Teklif Alın
+                            <div className="flex flex-col items-start">
+                                <span className="text-2xl font-black uppercase tracking-wide">Teklif Alın</span>
+                                <span className="text-xs text-red-100 font-medium opacity-90">Hızlı & Ücretsiz</span>
+                            </div>
+                            <div className="bg-white/20 p-2 rounded-full group-hover:bg-white group-hover:text-red-600 transition-colors duration-300">
+                                <Send className="w-8 h-8" />
+                            </div>
+                        </a>
+
+                        {/* 2. Buton: REFERANSLARIMIZ (Beyaz Dolgulu - Çok Net) */}
+                        <a
+                            href="#projects"
+                            className="group w-full md:w-auto min-w-[280px] flex items-center justify-center gap-4 px-12 py-6 bg-white text-gray-900 rounded-2xl shadow-2xl hover:bg-gray-100 hover:-translate-y-2 transition-all duration-300"
+                        >
+                            <div className="bg-gray-100 p-2 rounded-full group-hover:bg-gray-200 transition-colors">
+                                <CheckCircle2 className="w-8 h-8 text-gray-900" />
+                            </div>
+                            <div className="flex flex-col items-start">
+                                <span className="text-2xl font-black uppercase tracking-wide">Referanslar</span>
+                                <span className="text-xs text-gray-500 font-bold opacity-90">Başarı Hikayelerimiz</span>
+                            </div>
                         </a>
                     </motion.div>
+
                 </div>
             </div>
 
-            {/* Scroll Göstergesi - En altta ortada sabit */}
+            {/* Scroll Göstergesi */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/40 hover:text-white/80 transition-colors cursor-pointer"
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/50 hover:text-white transition-colors cursor-pointer"
             >
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3 opacity-70">Keşfet</span>
                 <motion.div
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    className="p-1 rounded-full border border-white/10 backdrop-blur-sm"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                    <ChevronDown className="w-5 h-5" />
+                    <ChevronDown className="w-8 h-8" />
                 </motion.div>
             </motion.div>
         </section>

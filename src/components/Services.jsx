@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
     Building2,
@@ -6,120 +7,168 @@ import {
     HardHat,
     Home,
     Wrench,
+    MoveRight
 } from 'lucide-react';
 
 const services = [
     {
         icon: Building2,
         title: 'Kamu Projeleri',
-        description: 'Hastaneler, okullar, kütüphaneler ve devlet binaları için yüksek standartlarda yapım işleri.',
+        description: 'Devlet binaları, hastaneler ve okullar için yüksek standartlarda, yönetmeliklere tam uyumlu inşaat çözümleri.',
     },
     {
         icon: Home,
-        title: 'Konut Projeleri',
-        description: 'Modern yaşamın gereksinimlerine uygun, güvenli ve konforlu lüks konut çözümleri.',
+        title: 'Lüks Konut Projeleri',
+        description: 'Modern yaşamın tüm gereksinimlerini karşılayan, estetik ve güvenliğin birleştiği nitelikli yaşam alanları.',
     },
     {
         icon: Hammer,
         title: 'Kaba Yapı İşleri',
-        description: 'Projelerin en kritik aşaması olan temel ve karkas sistemlerin kusursuz inşası.',
+        description: 'Projenin en önemli aşaması olan temel ve iskelet sisteminin, statik projelere birebir uyumla inşası.',
     },
     {
         icon: Wrench,
         title: 'Tadilat & Güçlendirme',
-        description: 'Mevcut yapıların deprem yönetmeliğine uygun hale getirilmesi ve güçlendirilmesi.',
+        description: 'Mevcut yapıların analiz edilmesi ve en güncel deprem yönetmeliklerine göre direncinin artırılması.',
     },
     {
         icon: PaintBucket,
         title: 'Restorasyon & Yenileme',
-        description: 'Eskiyen yapıların modern mimari anlayışıyla yeniden hayata kazandırılması.',
+        description: 'Tarihi dokuyu bozmadan, yapıların ömrünü uzatan ve modern kullanıma hazırlayan hassas yenileme çalışmaları.',
     },
     {
         icon: HardHat,
         title: 'Proje Danışmanlığı',
-        description: 'Süreç yönetimi, maliyet analizi ve teknik danışmanlık hizmetleri.',
+        description: 'Arsa seçiminden ruhsat aşamasına, maliyet analizinden teslimata kadar profesyonel süreç yönetimi.',
     },
 ];
 
-// Tek bir kart bileşeni
-function ServiceCard({ service, index }) {
-    const IconComponent = service.icon;
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            whileHover={{ y: -10 }}
-            className="group relative overflow-hidden"
-        >
-            {/* Card Container - PADDING ARTTIRILDI (p-10 -> p-12 lg:p-14) */}
-            <div className="bg-white rounded-[2rem] p-10 lg:p-14 shadow-sm hover:shadow-2xl border border-gray-100 transition-all duration-300 flex flex-col items-center text-center h-full">
-
-                {/* Top Border Animation */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-red to-red-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-
-                {/* Icon Container - BOYUT VE MARGIN ARTTIRILDI */}
-                <div className="w-24 h-24 rounded-3xl bg-red-50 flex items-center justify-center mb-10 group-hover:bg-primary-red transition-all duration-300 group-hover:scale-110 shadow-lg shadow-red-100">
-                    <IconComponent className="w-12 h-12 text-primary-red group-hover:text-white transition-colors duration-300" />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 group-hover:text-primary-red transition-colors duration-300">
-                    {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 leading-relaxed text-lg">
-                    {service.description}
-                </p>
-            </div>
-        </motion.div>
-    );
-}
-
 export default function Services() {
+    // --- DRAG (SÜRÜKLEME) MANTIĞI ---
+    const sliderRef = useRef(null);
+    const [isDown, setIsDown] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+
+    const handleMouseDown = (e) => {
+        setIsDown(true);
+        setStartX(e.pageX - sliderRef.current.offsetLeft);
+        setScrollLeft(sliderRef.current.scrollLeft);
+    };
+    const handleMouseLeave = () => {
+        setIsDown(false);
+    };
+    const handleMouseUp = () => {
+        setIsDown(false);
+    };
+    const handleMouseMove = (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - sliderRef.current.offsetLeft;
+        const walk = (x - startX) * 2; // *2 hızı arttırır
+        sliderRef.current.scrollLeft = scrollLeft - walk;
+    };
+    // --------------------------------
+
     return (
-        <section id="services" className="bg-gray-50 section-padding relative overflow-hidden">
-            {/* Background Grid Pattern */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <section 
+            id="services" 
+            className="relative bg-[#0F0F0F] overflow-hidden text-white"
+            // [KURAL]: Boşluklar elle veriliyor
+            style={{ paddingTop: '120px', paddingBottom: '120px' }}
+        >
+            
+            <style jsx>{`
+                .hide-scrollbar::-webkit-scrollbar { display: none; }
+                .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                /* Sürükleme sırasında metin seçimini engelle */
+                .no-select { user-select: none; }
+            `}</style>
 
-            <div className="container-max relative z-10">
+            <div className="absolute inset-0 opacity-[0.03]" 
+                style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+            />
+            
+            {/* Konteyner Boşlukları */}
+            <div className="container-max relative z-10 flex flex-col" style={{ gap: '60px' }}>
+                
+                {/* BAŞLIK ALANI */}
+                <div className="flex flex-col max-w-3xl px-4 md:px-0" style={{ gap: '20px' }}>
+                    <span className="text-red-500 font-bold tracking-[0.2em] uppercase text-sm flex items-center gap-2">
+                        <span className="w-8 h-[2px] bg-red-500"></span>
+                        Hizmetlerimiz
+                    </span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] whitespace-nowrap">
+    Mükemmeliyet İnşa Ediyoruz
+</h2>
+                    <p className="text-gray-400 text-lg mt-2 leading-relaxed md:whitespace-nowrap">
+    Sadece bina yapmıyoruz; geleceğe güvenli, estetik ve kalıcı eserler bırakıyoruz.
+</p>
 
-                {/* Section Header */}
-                <div className="w-full flex justify-center">
-                    <motion.div
-                        className="max-w-3xl text-center"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <span className="text-primary-red font-bold tracking-wider uppercase text-sm mb-4 block">
-                            Neler Yapıyoruz?
-                        </span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
-                            İnşaat Sektöründe <br /><span className="text-primary-red">Kusursuz Çözümler</span>
-                        </h2>
-                        <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
-                            20 yılı aşkın tecrübemizle, projenizin her aşamasında kalite ve güveni inşa ediyoruz.
-                        </p>
-                    </motion.div>
+                    
+                    {/* Mobil İpucu */}
+                    <div className="flex md:hidden items-center gap-2 text-white/30 text-sm mt-2 animate-pulse">
+                        <MoveRight className="w-4 h-4" />
+                        <span>Kaydırın</span>
+                    </div>
                 </div>
 
-                {/* ===== SPACER: Başlık ile kartlar arası ===== */}
-                <div className="h-24 lg:h-40" />
-
-                {/* Services Grid - GAP ARTTIRILDI */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
+                {/* SLIDER ALANI (MOUSE DRAG AKTİF) */}
+                <div 
+                    ref={sliderRef}
+                    className={`flex overflow-x-auto pb-8 px-4 md:px-0 hide-scrollbar no-select ${isDown ? 'cursor-grabbing' : 'cursor-grab'}`}
+                    style={{ gap: '30px' }}
+                    // Eventler
+                    onMouseDown={handleMouseDown}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseUp={handleMouseUp}
+                    onMouseMove={handleMouseMove}
+                >
+                    
                     {services.map((service, index) => (
-                        <ServiceCard
-                            key={service.title}
-                            service={service}
-                            index={index}
-                        />
+                        <div 
+                            key={index}
+                            className="shrink-0 w-[85vw] md:w-[400px]"
+                            // Drag işlemi snap ile çakışmasın diye snap class'larını kaldırdım, akıcı kaysın.
+                        >
+                            <div className="group h-full bg-[#1A1A1A] border border-white/5 rounded-[2rem] hover:border-red-500/50 transition-all duration-300 flex flex-col relative overflow-hidden"
+                                // [KURAL]: Kart içi boşluklar elle
+                                style={{ padding: '40px', gap: '30px' }}
+                            >
+                                
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-red-500/10 transition-colors duration-500" />
+
+                                {/* 1. İkon ve Numara */}
+                                <div className="flex justify-between items-start relative z-10">
+                                    <div className="w-14 h-14 bg-[#252525] rounded-xl flex items-center justify-center border border-white/5 group-hover:bg-white group-hover:scale-110 transition-all duration-500 shadow-lg">
+                                        <service.icon className="w-7 h-7 text-red-500 group-hover:text-black transition-colors duration-500" />
+                                    </div>
+                                    <span className="text-4xl font-black text-white/5 group-hover:text-white/10 transition-colors duration-500 font-mono">
+                                        0{index + 1}
+                                    </span>
+                                </div>
+
+                                {/* 2. Başlık */}
+                                <div className="relative z-10">
+                                    <h3 className="text-2xl font-bold text-white group-hover:text-red-500 transition-colors duration-300">
+                                        {service.title}
+                                    </h3>
+                                </div>
+
+                                {/* 3. Açıklama */}
+                                <div className="relative z-10 grow">
+                                    <p className="text-gray-400 text-base leading-relaxed font-medium">
+                                        {service.description}
+                                    </p>
+                                </div>
+
+                                {/* "İncele" butonu BURADAN KALDIRILDI. */}
+
+                            </div>
+                        </div>
                     ))}
+                    
+                    <div className="w-2 shrink-0" />
                 </div>
             </div>
         </section>
