@@ -71,13 +71,13 @@ export default function Services() {
     // --------------------------------
 
     return (
-        <section 
-            id="services" 
+        <section
+            id="services"
             className="relative bg-[#0F0F0F] overflow-hidden text-white"
             // [KURAL]: Boşluklar elle veriliyor
             style={{ paddingTop: '50px', paddingBottom: '70px' }}
         >
-            
+
             <style jsx>{`
                 .hide-scrollbar::-webkit-scrollbar { display: none; }
                 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -85,27 +85,27 @@ export default function Services() {
                 .no-select { user-select: none; }
             `}</style>
 
-            <div className="absolute inset-0 opacity-[0.03]" 
-                style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+            <div className="absolute inset-0 opacity-[0.03]"
+                style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}
             />
-            
+
             {/* Konteyner Boşlukları */}
             <div className="container-max relative z-10 flex flex-col" style={{ gap: '60px' }}>
-                
+
                 {/* BAŞLIK ALANI */}
                 <div className="flex flex-col max-w-3xl px-4 md:px-0" style={{ gap: '20px' }}>
                     <span className="text-red-500 font-bold tracking-[0.2em] uppercase text-sm flex items-center gap-2">
                         <span className="w-8 h-[2px] bg-red-500"></span>
                         Hizmetlerimiz
                     </span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:whitespace-nowrap">
-    Mükemmeliyet İnşa Ediyoruz
-</h2>
-                    <p className="text-gray-400 text-lg mt-2 leading-relaxed md:whitespace-nowrap">
-    Sadece bina yapmıyoruz; geleceğe güvenli, estetik ve kalıcı eserler bırakıyoruz.
-</p>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight xl:whitespace-nowrap">
+                        Mükemmeliyet İnşa Ediyoruz
+                    </h2>
+                    <p className="text-gray-400 text-lg mt-2 leading-relaxed xl:whitespace-nowrap">
+                        Sadece bina yapmıyoruz; geleceğe güvenli, estetik ve kalıcı eserler bırakıyoruz.
+                    </p>
 
-                    
+
                     {/* Mobil İpucu */}
                     <div className="flex md:hidden items-center gap-2 text-white/30 text-sm mt-2 animate-pulse">
                         <MoveRight className="w-4 h-4" />
@@ -114,7 +114,7 @@ export default function Services() {
                 </div>
 
                 {/* SLIDER ALANI (MOUSE DRAG AKTİF) */}
-                <div 
+                <div
                     ref={sliderRef}
                     className={`flex overflow-x-auto pb-8 px-4 md:px-0 hide-scrollbar no-select ${isDown ? 'cursor-grabbing' : 'cursor-grab'}`}
                     style={{ gap: '30px' }}
@@ -124,18 +124,18 @@ export default function Services() {
                     onMouseUp={handleMouseUp}
                     onMouseMove={handleMouseMove}
                 >
-                    
+
                     {services.map((service, index) => (
-                        <div 
+                        <div
                             key={index}
                             className="shrink-0 w-[85vw] md:w-[400px]"
-                            // Drag işlemi snap ile çakışmasın diye snap class'larını kaldırdım, akıcı kaysın.
+                        // Drag işlemi snap ile çakışmasın diye snap class'larını kaldırdım, akıcı kaysın.
                         >
                             <div className="group h-full bg-[#1A1A1A] border border-white/5 rounded-[2rem] hover:border-red-500/50 transition-all duration-300 flex flex-col relative overflow-hidden"
                                 // [KURAL]: Kart içi boşluklar elle
                                 style={{ padding: '40px', gap: '30px' }}
                             >
-                                
+
                                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-red-500/10 transition-colors duration-500" />
 
                                 {/* 1. İkon ve Numara */}
@@ -167,7 +167,7 @@ export default function Services() {
                             </div>
                         </div>
                     ))}
-                    
+
                     <div className="w-2 shrink-0" />
                 </div>
             </div>
