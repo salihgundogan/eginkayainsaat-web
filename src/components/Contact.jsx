@@ -30,9 +30,7 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="relative bg-white overflow-hidden"
-            // Dikey Boşluklar (160px)
-            style={{ paddingTop: '50px', paddingBottom: '160px' }}
+            className="relative bg-white overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-40"
         >
             {/* Arka Plan Dekorasyonu */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-red-50 rounded-full blur-[120px] pointer-events-none" />
@@ -41,7 +39,7 @@ export default function Contact() {
             {/* Yan Boşluklar (%5) */}
             <div className="container-max relative z-10" style={{ paddingLeft: '5%', paddingRight: '5%' }}>
 
-                <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+                <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-start">
 
                     {/* --- SOL KOLON (Bilgiler) --- */}
                     <div className="lg:col-span-2 flex flex-col" style={{ gap: '40px' }}>
@@ -102,7 +100,7 @@ export default function Contact() {
                                     <div className="shrink-0 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-red-600 shadow-sm border border-gray-100 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
                                         <Mail className="w-6 h-6" />
                                     </div>
-                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">ibrahim@eginkayainsaat.com</span>
+                                    <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors break-all">ibrahim@eginkayainsaat.com</span>
                                 </a>
                             </div>
                         </div>

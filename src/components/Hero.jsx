@@ -35,7 +35,7 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         custom={0.1}
-                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] mb-8 tracking-tight drop-shadow-2xl"
+                        className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] mb-8 tracking-tight drop-shadow-2xl"
                     >
                         Zorlu Projelerin <br className="hidden sm:block" />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600 relative inline-block">
