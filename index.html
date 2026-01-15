@@ -31,6 +31,15 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Netlify Form Detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="ad" />
+      <input type="text" name="soyad" />
+      <input type="email" name="email" />
+      <input type="tel" name="telefon" />
+      <select name="konu"></select>
+      <textarea name="mesaj"></textarea>
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

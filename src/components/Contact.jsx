@@ -1,7 +1,32 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 
+import { useState } from 'react';
+
 export default function Contact() {
+    const [formStatus, setFormStatus] = useState(null); // null, 'submitting', 'success', 'error'
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setFormStatus('submitting');
+
+        const myForm = e.target;
+        const formData = new FormData(myForm);
+
+        try {
+            await fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString(),
+            });
+            setFormStatus('success');
+            myForm.reset();
+        } catch (error) {
+            console.error(error);
+            setFormStatus('error');
+        }
+    };
+
     return (
         <section
             id="contact"
@@ -94,6 +119,7 @@ export default function Contact() {
                             method="POST"
                             data-netlify="true"
                             netlify-honeypot="bot-field"
+                            onSubmit={handleSubmit}
                         >
                             <input type="hidden" name="form-name" value="contact" />
                             <p className="hidden">
@@ -192,11 +218,24 @@ export default function Contact() {
                                     style={{ padding: '20px 45px' }}
                                     className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-800 text-white font-bold text-lg shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 w-auto"
                                 >
-                                    <span className="relative z-10">Mesajı Gönder</span>
-                                    <Send className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                                    <span className="relative z-10">
+                                        {formStatus === 'submitting' ? 'Gönderiliyor...' : 'Mesajı Gönder'}
+                                    </span>
+                                    <Send className={`w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform ${formStatus === 'submitting' ? 'animate-pulse' : ''}`} />
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
                                 </button>
                             </div>
+
+                            {formStatus === 'success' && (
+                                <div className="p-4 bg-green-50 text-green-700 border border-green-200 rounded-xl font-bold text-center">
+                                    Mesajınız başarıyla gönderildi! En kısa sürede dönüş yapacağız.
+                                </div>
+                            )}
+                            {formStatus === 'error' && (
+                                <div className="p-4 bg-red-50 text-red-700 border border-red-200 rounded-xl font-bold text-center">
+                                    Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya telefon ile ulaşın.
+                                </div>
+                            )}
 
                         </form>
                     </div>
