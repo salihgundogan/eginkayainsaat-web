@@ -57,8 +57,8 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${isScrolled
-                    ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-0'
-                    : 'bg-transparent py-4'
+                ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-0'
+                : 'bg-transparent py-4'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,7 +78,7 @@ export default function Navbar() {
                             // Scroll durumuna göre logo değişimi (Public klasöründe logo-white.svg olduğunu varsayıyorum)
                             src={isScrolled ? "/logo.svg" : "/logo-white.svg"}
                             alt="Eğinkaya İnşaat"
-                            className={`w-auto transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'
+                            className={`w-auto transition-all duration-300 ${isScrolled ? 'h-12' : 'h-16'
                                 }`}
                         />
                     </motion.a>
@@ -91,8 +91,8 @@ export default function Navbar() {
                                 href={link.href}
                                 onClick={(e) => handleLinkClick(e, link.href)}
                                 className={`text-sm font-medium tracking-wide transition-colors duration-200 ${isScrolled
-                                        ? 'text-gray-600 hover:text-primary-red'
-                                        : 'text-white/90 hover:text-white'
+                                    ? 'text-gray-600 hover:text-primary-red'
+                                    : 'text-white/90 hover:text-white'
                                     } ${activeLink === link.href ? (isScrolled ? 'text-primary-red font-semibold' : 'text-white font-semibold') : ''}`}
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -107,8 +107,8 @@ export default function Navbar() {
                             href="#contact"
                             onClick={(e) => handleLinkClick(e, '#contact')}
                             className={`text-sm font-semibold tracking-wide transition-colors duration-200 ${isScrolled
-                                    ? 'text-primary-red hover:text-red-700'
-                                    : 'text-white hover:text-red-200'
+                                ? 'text-primary-red hover:text-red-700'
+                                : 'text-white hover:text-red-200'
                                 }`}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -149,8 +149,8 @@ export default function Navbar() {
                                     href={link.href}
                                     onClick={(e) => handleLinkClick(e, link.href)}
                                     className={`flex items-center justify-between p-4 rounded-xl transition-all ${activeLink === link.href
-                                            ? 'bg-red-50 text-primary-red font-semibold'
-                                            : 'text-gray-600 hover:bg-gray-50'
+                                        ? 'bg-red-50 text-primary-red font-semibold'
+                                        : 'text-gray-600 hover:bg-gray-50'
                                         }`}
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
