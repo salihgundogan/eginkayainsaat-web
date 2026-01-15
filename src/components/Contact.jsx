@@ -51,7 +51,7 @@ export default function Contact() {
                             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-[1.1]">
                                 Projenizi <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-800">
-                                    Birlikte Planlayalım.
+                                    Birlikte Planlayalım
                                 </span>
                             </h2>
                             <p className="text-gray-500 text-lg leading-relaxed">

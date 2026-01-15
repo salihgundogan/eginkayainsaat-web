@@ -16,13 +16,13 @@ const features = [
 
 export default function About() {
     return (
-        <section 
-            id="about" 
+        <section
+            id="about"
             className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-red-50/30"
             // MANUEL ZORUNLU BOŞLUK (Padding) - CSS Class sorunu varsa bunu kesin uygular
             style={{ paddingTop: '50px', paddingBottom: '140px' }}
         >
-            
+
             {/* Arka Plan Süslemeleri */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-red-200/20 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[500px] h-[500px] bg-gray-200/40 rounded-full blur-3xl" />
@@ -49,7 +49,7 @@ export default function About() {
                             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-[1.2]">
                                 Söz Verdiğimiz Gibi, <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600">
-                                    Tam Zamanında.
+                                    Tam Zamanında
                                 </span>
                             </h2>
                         </div>
@@ -63,7 +63,7 @@ export default function About() {
                         {/* ÖZELLİK LİSTESİ */}
                         <div className="flex flex-col gap-6 mt-4">
                             {features.map((item, idx) => (
-                                <motion.div 
+                                <motion.div
                                     key={idx}
                                     initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
