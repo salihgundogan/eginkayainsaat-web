@@ -3,8 +3,8 @@ import { Phone, Mail, MapPin, Send } from 'lucide-react';
 
 export default function Contact() {
     return (
-        <section 
-            id="contact" 
+        <section
+            id="contact"
             className="relative bg-white overflow-hidden"
             // Dikey Boşluklar (160px)
             style={{ paddingTop: '50px', paddingBottom: '160px' }}
@@ -15,7 +15,7 @@ export default function Contact() {
 
             {/* Yan Boşluklar (%5) */}
             <div className="container-max relative z-10" style={{ paddingLeft: '5%', paddingRight: '5%' }}>
-                
+
                 <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
                     {/* --- SOL KOLON (Bilgiler) --- */}
@@ -38,7 +38,7 @@ export default function Contact() {
 
                         <div className="flex flex-col" style={{ gap: '25px' }}>
                             {/* Adres Kutusu - GÜNCELLENDİ */}
-                            <div 
+                            <div
                                 // p-6 kaldırıldı, style ile padding eklendi
                                 className="flex items-start gap-5 rounded-3xl bg-gray-50 border border-gray-100 hover:border-red-200 transition-colors duration-300 group shadow-sm hover:shadow-md"
                                 style={{ padding: '20px' }}
@@ -56,8 +56,8 @@ export default function Contact() {
 
                             {/* Telefon & Mail Kutuları - GÜNCELLENDİ */}
                             <div className="flex flex-col gap-4">
-                                <a 
-                                    href="tel:+90 533 020 94 42" 
+                                <a
+                                    href="tel:+90 533 020 94 42"
                                     // p-5 kaldırıldı, style ile padding eklendi
                                     className="flex items-center gap-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300"
                                     style={{ padding: '15px' }}
@@ -68,8 +68,8 @@ export default function Contact() {
                                     <span className="font-bold text-lg text-gray-700 group-hover:text-gray-900 transition-colors">+90 (533) 020 94 42</span>
                                 </a>
 
-                                <a 
-                                    href="mailto:ibrahim@eginkayainsaat.com" 
+                                <a
+                                    href="mailto:ibrahim@eginkayainsaat.com"
                                     // p-5 kaldırıldı, style ile padding eklendi
                                     className="flex items-center gap-5 rounded-3xl bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-xl hover:shadow-gray-200/50 hover:border-red-100 group transition-all duration-300"
                                     style={{ padding: '15px' }}
@@ -84,32 +84,44 @@ export default function Contact() {
                     </div>
 
                     {/* --- SAĞ KOLON (Form) --- */}
-                    <div 
+                    <div
                         className="lg:col-span-3 bg-white rounded-[2.5rem] shadow-2xl shadow-gray-200/70 border border-gray-100"
                         style={{ padding: '45px' }}
                     >
-                        <form className="flex flex-col gap-5">
-                            
+                        <form
+                            className="flex flex-col gap-5"
+                            name="contact"
+                            method="POST"
+                            data-netlify="true"
+                            netlify-honeypot="bot-field"
+                        >
+                            <input type="hidden" name="form-name" value="contact" />
+                            <p className="hidden">
+                                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                            </p>
+
                             <h3 className="text-2xl font-bold text-gray-900 mb-1">Bize Yazın</h3>
 
                             {/* İsim & Soyisim */}
                             <div className="grid md:grid-cols-2 gap-5">
                                 <div className="flex flex-col gap-2">
                                     <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Adınız</label>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Adınız" 
+                                    <input
+                                        type="text"
+                                        name="ad"
+                                        placeholder="Adınız"
                                         style={{ padding: '18px 24px' }}
-                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Soyadınız</label>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Soyadınız" 
+                                    <input
+                                        type="text"
+                                        name="soyad"
+                                        placeholder="Soyadınız"
                                         style={{ padding: '18px 24px' }}
-                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium"
                                     />
                                 </div>
                             </div>
@@ -118,20 +130,22 @@ export default function Contact() {
                             <div className="grid md:grid-cols-2 gap-5">
                                 <div className="flex flex-col gap-2">
                                     <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">E-posta</label>
-                                    <input 
-                                        type="email" 
-                                        placeholder="ornek@sirket.com" 
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="ornek@sirket.com"
                                         style={{ padding: '18px 24px' }}
-                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Telefon</label>
-                                    <input 
-                                        type="tel" 
-                                        placeholder="05XX XXX XX XX" 
+                                    <input
+                                        type="tel"
+                                        name="telefon"
+                                        placeholder="05XX XXX XX XX"
                                         style={{ padding: '18px 24px' }}
-                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium" 
+                                        className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium"
                                     />
                                 </div>
                             </div>
@@ -141,7 +155,8 @@ export default function Contact() {
                                 <div className="flex flex-col gap-2">
                                     <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Konu</label>
                                     <div className="relative">
-                                        <select 
+                                        <select
+                                            name="konu"
                                             style={{ padding: '18px 24px' }}
                                             className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all cursor-pointer appearance-none"
                                         >
@@ -151,7 +166,7 @@ export default function Contact() {
                                             <option>Diğer</option>
                                         </select>
                                         <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6" /></svg>
                                         </div>
                                     </div>
                                 </div>
@@ -161,8 +176,9 @@ export default function Contact() {
                             {/* Mesaj */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs font-bold text-gray-500 ml-2 uppercase tracking-wide">Mesajınız</label>
-                                <textarea 
-                                    rows="3" 
+                                <textarea
+                                    name="mesaj"
+                                    rows="3"
                                     placeholder="Projenizden kısaca bahsedin..."
                                     style={{ padding: '18px 24px' }}
                                     className="w-full bg-gray-50 border border-gray-200 rounded-2xl text-gray-900 font-bold focus:outline-none focus:bg-white focus:ring-4 focus:ring-red-500/10 focus:border-red-500 transition-all placeholder:text-gray-400 placeholder:font-medium resize-none"
@@ -171,8 +187,8 @@ export default function Contact() {
 
                             {/* BUTON */}
                             <div className="flex justify-start pt-4">
-                                <button 
-                                    type="button" 
+                                <button
+                                    type="submit"
                                     style={{ padding: '20px 45px' }}
                                     className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-800 text-white font-bold text-lg shadow-2xl shadow-red-600/30 hover:shadow-red-600/50 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4 w-auto"
                                 >
